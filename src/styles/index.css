@@ -10,3 +10,20 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+/* * {
+  outline: 1px dashed red;
+  min-height: 10px;
+}  */
+
+#main{
+    min-height: 100vh;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+  .Footer{
+    margin-top: auto;
+  }
+  /* #test{
+    background: red;
+  } */

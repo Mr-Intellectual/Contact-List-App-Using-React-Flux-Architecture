@@ -14,6 +14,7 @@ import injectContext from "./store/appContext";
 import  Navbar  from "./component/navbar.jsx";
 import  Footer  from "./component/footer.jsx";
 import Form from "./component/form.jsx";
+import Contact from "./component/contact.jsx";
 // import Todo from "./views/todo";
 
 
@@ -27,11 +28,12 @@ const Layout = () => {
 		<div id="main">
 			<BrowserRouter >
 					<Navbar />
-					<div className="container-xxl hv-100">
+					<div className="container-xxl hv-100" id="main">
 					<Routes>
 						<Route path="/" element={<Home />} />
+						<Route path="/contact" element={<Contact />} />
 						<Route path="/form" element={<Form />} />
-						{/* <Route path="/todo" element={<Todo/>} />
+						{/* 
 						<Route path="/table" element={<Table />} />
 						<Route path="/detials" element={<Detials />} /> */}
 						<Route path="*" element={<h1>Not found!</h1>} />

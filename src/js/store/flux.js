@@ -5,10 +5,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			list: [
 				{
-					"Task Info": "FIRST",
-					"ID Info": 12345,
-					"Created": "Jan. 23, 2023",
-					"Status": { "Status": "Pending", "Color": "danger" },
+					"Full Name": "FIRST",
+					"E-Mail": 12345,
+					"Phone": "Jan. 23, 2023",
+					"Address": "",
 
 				},
 			],

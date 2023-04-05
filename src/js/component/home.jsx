@@ -1,7 +1,6 @@
 import React from "react";
 
 //include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
 
 //create your first component
 const Home = () => {
@@ -21,9 +20,9 @@ const Home = () => {
 		// 	</p>
 		// </div>
 
-	<div className="px-3 my-4 bg-light rounded-3 text-center">
+	<div className="px-3 my-4 bg-light rounded-3 text-center" >
         <div className="container-fluid py-3">
-        <h1 className="display-5 fw-bold my-3" id="title">Welcome to the ToDo List!</h1>
+        <h1 className="display-5 fw-bold my-3" id="title">Welcome My Contect List App!</h1>
         <p className="col-md-12 fs-4 mx-auto my-4">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione magni vel aliquid, natus laudantium a beatae adipisci ab quam soluta pariatur, blanditiis totam corrupti sint suscipit! Dolor nam perferendis voluptatibus.
         </p>

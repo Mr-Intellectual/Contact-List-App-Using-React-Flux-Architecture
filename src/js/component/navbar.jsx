@@ -39,11 +39,15 @@ export default function Navbar () {
       </div> */}
 	  <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav ms-auto text-center ">
-			<Link  className="nav-link text-white" to="/">
+			<Link  className="nav-link text-white" to="/contact">
+      <p className="fs-6 m-0" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
 				Contact List
+      </p>
 			</Link>
 			<Link  className="nav-link text-white" to="/form">
+      <p className="fs-6 m-0" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
 				Contact Forms
+        </p>
 			</Link>
             </div>
           </div>
