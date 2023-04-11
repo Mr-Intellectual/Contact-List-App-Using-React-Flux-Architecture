@@ -38,12 +38,11 @@ const Contact = () => {
              </div>
           </div>  
           <div className="col-3">
-            <div className="col-6">
-            <i className="fa-solid fa-pen"></i>
-            </div>
-            <div className="col-6">
-            <i className="fa-solid fa-trash"></i>
-            </div>
+            <div className="d-flex justify-content-end">
+            <i className="fa-solid fa-pen col-3"></i>
+            <i className="fa-solid fa-trash col-3"></i>
+            </div> 
+            
           </div>
 
           </div>
