@@ -1,10 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 //include images into your bundle
 
 
 //create your first component
 const Form = () => {
+  const { store, actions } = useContext(Context);
+
 	return (
 		<div className="container">
     <form>
@@ -26,10 +30,12 @@ const Form = () => {
             <input type="address" class="form-control" id="exampleInputAddress1" placeholder="Enter address"/>
           </div>
           <div class="d-grid gap-2 m-3">
-            <button class="btn btn-primary" type="button">Save</button>
+            <button onClick={(e)=>actions.saveChangeDetail(e)} class="btn btn-primary" type="button">Save</button>
           </div>
           <div class="m-3">
-            <a href="#">or get back to contacts</a>
+          <Link className="m-0 p-0" to="/contact">
+            or get back to contacts
+          </Link>
 
           </div>
       </form>
