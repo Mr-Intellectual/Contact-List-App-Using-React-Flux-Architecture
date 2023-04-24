@@ -6,9 +6,10 @@ export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary bg-black">
       <div className="container">
-        <Link to="/">
+        <Link to="/" style={{ textDecoration: "none" }}>
           <div className="navbar-brand text-white">Home</div>
         </Link>
+
         <button
           className="navbar-toggler "
           type="button"

@@ -20,7 +20,7 @@ const Home = () => {
         <div>
           <Link to="/contact">
             <button
-              className="btn btn-info  float-center mt-5 mb-3 mx-1"
+              className="btn btn-info text-white  float-center mt-5 mb-3 mx-1"
               type="button"
             >
               Goto Contact-List

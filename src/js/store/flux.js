@@ -1,19 +1,20 @@
+import React from "react";
 const getState = ({ getStore, getActions, setStore }) => {
 
 
 	return {
 		store: {
 			list: [
-				{
-					"First Name": "Cookie",
-					"Last Name": "Monster",
-					"E-Mail": "SesameCookie@gmail.com",
-					"Phone": "(212) 123-4567",
-					"Address": "123 Sesame St, New York, NY 12345",
-			
-				},
+				// {
+				// 	"First Name": "Cookie",
+				// 	"Last Name": "Monster",
+				// 	"E-Mail": "SesameCookie@gmail.com",
+				// 	"Phone": "(212) 123-4567",
+				// 	"Address": "123 Sesame St, New York, NY 12345",
+
+				// },
 			],
-			contactHolder:[
+			contactHolder: [
 				{
 
 				}
@@ -22,6 +23,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 
+
+			ranContact: () => {
+
+				return (
+					<div className="col-6 text-start">
+						<button className="btn btn-warning btn-sm" type="button">
+							Add New Random Contact
+						</button>
+					</div>
+				)
+
+			},
 
 			// Use getActions to call a function within a fuction
 			trashIcon: (i) => {
