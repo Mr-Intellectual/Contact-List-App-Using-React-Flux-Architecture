@@ -54,7 +54,7 @@ const Contact = () => {
                 <div className="col-sm-12 col-md-12 col-lg-2 my-2 py-2">
                   <div className="col-6 col-sm-6 text-center d-inline-block px-1">
                     <button
-                      className="btn btn-outline-black btn-sm mx-0 "
+                      className="btn btn-outline-black btn-sm mx-0 w-100"
                       type="button"
                     >
                       <i className="fa-solid fa-pen fa-lg"></i>
@@ -62,7 +62,7 @@ const Contact = () => {
                   </div>
                   <div className="col-6 col-sm-6 text-center d-inline-block px-1">
                     <button
-                      className="btn btn-outline-black btn-sm mx-0 "
+                      className="btn btn-outline-black btn-sm mx-0 w-100"
                       type="button"
                     >
                       <i className="fa-solid fa-trash fa-lg"></i>

@@ -16,14 +16,26 @@ const Form = () => {
         </legend>
         <div className="m-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
-            Full Name
+            First Name
           </label>
           <input
             type="text"
             className="form-control"
             id="exampleInputName1"
             aria-describedby="nameHelp"
-            placeholder="Full Name"
+            placeholder="First Name"
+          />
+        </div>
+        <div className="m-3">
+          <label htmlFor="exampleInputEmail1" className="form-label">
+            Last Name
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="exampleInputName1"
+            aria-describedby="nameHelp"
+            placeholder="Last Name"
           />
         </div>
         <div className="m-3">

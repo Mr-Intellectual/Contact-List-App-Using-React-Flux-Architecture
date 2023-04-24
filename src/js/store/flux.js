@@ -5,10 +5,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			list: [
 				{
-					"Full Name": "FIRST",
-					"E-Mail": 12345,
-					"Phone": "Jan. 23, 2023",
-					"Address": "",
+					"First Name": "Cookie",
+					"Last Name": "Monster",
+					"E-Mail": "SesameCookie@gmail.com",
+					"Phone": "(212) 123-4567",
+					"Address": "123 Sesame St, New York, NY 12345",
 			
 				},
 			],
