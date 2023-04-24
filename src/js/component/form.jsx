@@ -21,7 +21,7 @@ const Form = () => {
           <input
             type="text"
             className="form-control"
-            id="exampleInputName1"
+            id="FirstName"
             aria-describedby="nameHelp"
             placeholder="First Name"
           />
@@ -33,7 +33,7 @@ const Form = () => {
           <input
             type="text"
             className="form-control"
-            id="exampleInputName1"
+            id="LastName"
             aria-describedby="nameHelp"
             placeholder="Last Name"
           />
@@ -45,7 +45,7 @@ const Form = () => {
           <input
             type="email"
             className="form-control"
-            id="exampleInputEmail1"
+            id="Email"
             aria-describedby="emailHelp"
             placeholder="Enter email"
           />
@@ -57,7 +57,7 @@ const Form = () => {
           <input
             type="phone"
             className="form-control"
-            id="exampleInputPhone1"
+            id="Phone"
             placeholder="Enter phone"
           />
         </div>
@@ -68,7 +68,7 @@ const Form = () => {
           <input
             type="address"
             className="form-control"
-            id="exampleInputAddress1"
+            id="Address"
             placeholder="Enter address"
           />
         </div>
