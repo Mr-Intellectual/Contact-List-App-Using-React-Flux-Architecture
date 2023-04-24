@@ -1,8 +1,9 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+
 //Views
-import  Home  from "./component/home.jsx";
+import Home from "./component/home.jsx";
 // import { Demo } from "./views/demo";
 // import { Single } from "./views/single";
 import injectContext from "./store/appContext";
@@ -11,8 +12,8 @@ import injectContext from "./store/appContext";
 
 
 //Components
-import  Navbar  from "./component/navbar.jsx";
-import  Footer  from "./component/footer.jsx";
+import Navbar from "./component/navbar.jsx";
+import Footer from "./component/footer.jsx";
 import Form from "./component/form.jsx";
 import Contact from "./component/contact.jsx";
 // import Todo from "./views/todo";
@@ -27,8 +28,8 @@ const Layout = () => {
 	return (
 		<div id="main">
 			<BrowserRouter >
-					<Navbar />
-					<div className="container-xxl hv-100" id="main">
+				<Navbar />
+				<div className="container-xxl hv-100" id="main">
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/contact" element={<Contact />} />
@@ -38,8 +39,8 @@ const Layout = () => {
 						<Route path="/detials" element={<Detials />} /> */}
 						<Route path="*" element={<h1>Not found!</h1>} />
 					</Routes>
-					</div>
-					<Footer />
+				</div>
+				<Footer />
 			</BrowserRouter>
 		</div>
 	);
