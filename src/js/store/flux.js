@@ -16,8 +16,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			contactHolder: [
 				{
+					"First Name": "",
+					"Last Name": "",
+					"E-Mail": "",
+					"Phone": "",
+					"Address": "",
 
-				}
+				},
 			],
 
 		},
@@ -43,7 +48,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ list: newList })
 			},
 
-			checkIcon: (e) => {
+			saveButton: (e) => {
 				const store = getStore();
 				const Info = getActions().ranInfo();
 				const inputValue = store.holder;
@@ -70,40 +75,40 @@ const getState = ({ getStore, getActions, setStore }) => {
 				input1.value = ""
 			},
 
-			setHolder: (e) => {
+			setContactHolder: (e) => {
 				e.preventDefault()
 				if (e.target.value) {
 					setStore({ holder: e.target.value });
 				}
 			},
 
-			keyPress: (e) => {
-				const store = getStore();
-				const Info = getActions().ranInfo();
-				const memo = store.memoHolder;
-				const inputValue = store.holder;
+			// keyPress: (e) => {
+			// 	const store = getStore();
+			// 	const Info = getActions().ranInfo();
+			// 	const memo = store.memoHolder;
+			// 	const inputValue = store.holder;
 
-				let input1 = document.querySelector('#input1')
-				if (e.key === "Enter" && inputValue === "") {
-					alert("The input cannot be empty");
-				} else if (e.key === "Enter") {
-					const newObject = {
-						"Task Info": inputValue,
-						"ID Info": Info.ID,
-						"Created": Info.Created,
-						"Status": Info.Status,
-						"Memo": memo
-					};
+			// 	let input1 = document.querySelector('#input1')
+			// 	if (e.key === "Enter" && inputValue === "") {
+			// 		alert("The input cannot be empty");
+			// 	} else if (e.key === "Enter") {
+			// 		const newObject = {
+			// 			"Task Info": inputValue,
+			// 			"ID Info": Info.ID,
+			// 			"Created": Info.Created,
+			// 			"Status": Info.Status,
+			// 			"Memo": memo
+			// 		};
 
 
 
-					const newList = [...store.list, newObject];
-					setStore({ list: newList });
-					setStore({ holder: "" }); // reset the input value after adding a new task
-					setStore({ memoHolder: "" });
-					input1.value = ""
-				}
-			},
+			// 		const newList = [...store.list, newObject];
+			// 		setStore({ list: newList });
+			// 		setStore({ holder: "" }); // reset the input value after adding a new task
+			// 		setStore({ memoHolder: "" });
+			// 		input1.value = ""
+			// 	}
+			// },
 
 			ranInfo: () => {
 				const store = getStore();
@@ -145,28 +150,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 				return newRanInfo;
 			},
 
-			fetchData: () => {
-				let ranInt = Math.floor(Math.random() * 21) + 95;
-				const url = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://asdfast.beobit.net/api/?type=word&length=' + ranInt + '&startLorem=true');
-				return new Promise((resolve, reject) => {
-					// Time control nod to spam the api
-					setTimeout(() => {
-						fetch(url)
-							.then(response => response.json())
-							.then(data => {
-								const parsedJson = JSON.parse(data.contents);
+			// fetchData: () => {
+			// 	let ranInt = Math.floor(Math.random() * 21) + 95;
+			// 	const url = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://asdfast.beobit.net/api/?type=word&length=' + ranInt + '&startLorem=true');
+			// 	return new Promise((resolve, reject) => {
+			// 		// Time control nod to spam the api
+			// 		setTimeout(() => {
+			// 			fetch(url)
+			// 				.then(response => response.json())
+			// 				.then(data => {
+			// 					const parsedJson = JSON.parse(data.contents);
 
-								setStore({ memoHolder: parsedJson.text });
-								resolve(parsedJson.text);
-							})
-							.catch(error => {
-								console.error(error);
-								reject(error);
-							});
-					}, 100); // 1 second delay
+			// 					setStore({ memoHolder: parsedJson.text });
+			// 					resolve(parsedJson.text);
+			// 				})
+			// 				.catch(error => {
+			// 					console.error(error);
+			// 					reject(error);
+			// 				});
+			// 		}, 100); // 1 second delay
 
-				});
-			},
+			// 	});
+			// },
 
 			ranClick: (e) => {
 				const store = getStore();
@@ -188,120 +193,120 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			switchStatusButton: (e) => {
-				//need code..
-				const store = getStore();
-				const switchValue = store.switch;
-				let statusButton = false,
-					status = document.querySelectorAll(".badge")
+			// switchStatusButton: (e) => {
+			// 	//need code..
+			// 	const store = getStore();
+			// 	const switchValue = store.switch;
+			// 	let statusButton = false,
+			// 		status = document.querySelectorAll(".badge")
 
-				if (e.target.parentNode.parentNode.querySelector("#switch").id === "switch") {
-					status.forEach((i) => {
-						i.setAttribute("data-bs-toggle", "modal");
-						i.setAttribute("data-bs-target", "#Modal");
-						i.setAttribute("data-bs-whatever", "@getbootstrap");
-					})
+			// 	if (e.target.parentNode.parentNode.querySelector("#switch").id === "switch") {
+			// 		status.forEach((i) => {
+			// 			i.setAttribute("data-bs-toggle", "modal");
+			// 			i.setAttribute("data-bs-target", "#Modal");
+			// 			i.setAttribute("data-bs-whatever", "@getbootstrap");
+			// 		})
 
-					statusButton = true
-					setStore({ switch: statusButton })
-				}
-			},
-			statusChangeTable: (e) => {
-				const store = getStore();
-				const getStatus = e.target.innerText
-				let setStatus = {};
+			// 		statusButton = true
+			// 		setStore({ switch: statusButton })
+			// 	}
+			// },
+			// statusChangeTable: (e) => {
+			// 	const store = getStore();
+			// 	const getStatus = e.target.innerText
+			// 	let setStatus = {};
 
-			},
-
-
-			displayTrash: (e) => {
-
-				let up = document.querySelectorAll('#bUp'),
-					down = document.querySelectorAll('#bDown'),
-					trash = document.querySelectorAll('#bTrash')
-				up.forEach((i) => {
-					i.style.display = "none"
-				})
-				down.forEach((i) => {
-					i.style.display = "none"
-				})
-				trash.forEach((i) => {
-					i.style.display = ""
-				})
-			},
-
-			displayArrow: (e) => {
-				let up = document.querySelectorAll('#bUp'),
-					down = document.querySelectorAll('#bDown'),
-					trash = document.querySelectorAll('#bTrash')
-				up.forEach((i) => {
-					i.style.display = ""
-				})
-				down.forEach((i) => {
-					i.style.display = ""
-				})
-				trash.forEach((i) => {
-					i.style.display = "none"
-				})
-			},
-			moveItemUp: (i) => {
-				const store = getStore();
-				const lastIndex = store.list.length - 1;
-				const newList = store.list.map((item, index, arr) => {
-					if (index === i - 1) {
-						return arr[i];
-					} else if (index === i) {
-						if (index === 0) {
-							return arr[lastIndex];
-						} else {
-							return arr[i - 1];
-						}
-					} else if (index === lastIndex && i === 0) {
-						return arr[i];
-					} else {
-						return item;
-					}
-				});
-				setStore({ list: newList });
-			},
-
-			moveItemDown: (i) => {
-				const store = getStore();
-				const firstIndex = 0;
-				const lastIndex = store.list.length - 1;
-				const newList = store.list.map((item, index, arr) => {
-					if (index === i + 1) {
-						return arr[i];
-					} else if (index === i) {
-						if (index === lastIndex) {
-							return arr[firstIndex];
-						} else {
-							return arr[i + 1];
-						}
-					} else if (index === firstIndex && i === lastIndex) {
-						return arr[i];
-					} else {
-						return item;
-					}
-				});
-				setStore({ list: newList });
-			},
+			// },
 
 
-			gotoPage: (i) => {
-				const store = getStore();
-				let addDetails;
-				store.list.map((item, index) => {
+			// displayTrash: (e) => {
 
-					if (item["ID Info"] === i) {
+			// 	let up = document.querySelectorAll('#bUp'),
+			// 		down = document.querySelectorAll('#bDown'),
+			// 		trash = document.querySelectorAll('#bTrash')
+			// 	up.forEach((i) => {
+			// 		i.style.display = "none"
+			// 	})
+			// 	down.forEach((i) => {
+			// 		i.style.display = "none"
+			// 	})
+			// 	trash.forEach((i) => {
+			// 		i.style.display = ""
+			// 	})
+			// },
 
-						addDetails = item
-						return addDetails
-					}
-				})
-				setStore({ details: [addDetails] });
+			// displayArrow: (e) => {
+			// 	let up = document.querySelectorAll('#bUp'),
+			// 		down = document.querySelectorAll('#bDown'),
+			// 		trash = document.querySelectorAll('#bTrash')
+			// 	up.forEach((i) => {
+			// 		i.style.display = ""
+			// 	})
+			// 	down.forEach((i) => {
+			// 		i.style.display = ""
+			// 	})
+			// 	trash.forEach((i) => {
+			// 		i.style.display = "none"
+			// 	})
+			// },
+			// moveItemUp: (i) => {
+			// 	const store = getStore();
+			// 	const lastIndex = store.list.length - 1;
+			// 	const newList = store.list.map((item, index, arr) => {
+			// 		if (index === i - 1) {
+			// 			return arr[i];
+			// 		} else if (index === i) {
+			// 			if (index === 0) {
+			// 				return arr[lastIndex];
+			// 			} else {
+			// 				return arr[i - 1];
+			// 			}
+			// 		} else if (index === lastIndex && i === 0) {
+			// 			return arr[i];
+			// 		} else {
+			// 			return item;
+			// 		}
+			// 	});
+			// 	setStore({ list: newList });
+			// },
 
-			},
+			// moveItemDown: (i) => {
+			// 	const store = getStore();
+			// 	const firstIndex = 0;
+			// 	const lastIndex = store.list.length - 1;
+			// 	const newList = store.list.map((item, index, arr) => {
+			// 		if (index === i + 1) {
+			// 			return arr[i];
+			// 		} else if (index === i) {
+			// 			if (index === lastIndex) {
+			// 				return arr[firstIndex];
+			// 			} else {
+			// 				return arr[i + 1];
+			// 			}
+			// 		} else if (index === firstIndex && i === lastIndex) {
+			// 			return arr[i];
+			// 		} else {
+			// 			return item;
+			// 		}
+			// 	});
+			// 	setStore({ list: newList });
+			// },
+
+
+			// gotoPage: (i) => {
+			// 	const store = getStore();
+			// 	let addDetails;
+			// 	store.list.map((item, index) => {
+
+			// 		if (item["ID Info"] === i) {
+
+			// 			addDetails = item
+			// 			return addDetails
+			// 		}
+			// 	})
+			// 	setStore({ details: [addDetails] });
+
+			// },
 			ranDate: () => {
 				const store = getStore();
 
@@ -388,47 +393,47 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
 
-			backDetail: () => {
+			// backDetail: () => {
 
-				const store = getStore();
-				const currentTask = store.details[0];
-				const firstIndex = 0;
-				const lastIndex = store.list.length - 1;
-				let setPreviousTask;
+			// 	const store = getStore();
+			// 	const currentTask = store.details[0];
+			// 	const firstIndex = 0;
+			// 	const lastIndex = store.list.length - 1;
+			// 	let setPreviousTask;
 
-				for (let i = 0; i < store.list.length; i++) {
-					if (currentTask["ID Info"] === store.list[i]["ID Info"]) {
-						if (i === firstIndex) {
-							setPreviousTask = store.list[lastIndex];
-						} else {
-							setPreviousTask = store.list[i - 1];
-						}
-						break;
-					}
-				}
+			// 	for (let i = 0; i < store.list.length; i++) {
+			// 		if (currentTask["ID Info"] === store.list[i]["ID Info"]) {
+			// 			if (i === firstIndex) {
+			// 				setPreviousTask = store.list[lastIndex];
+			// 			} else {
+			// 				setPreviousTask = store.list[i - 1];
+			// 			}
+			// 			break;
+			// 		}
+			// 	}
 
-				setStore({ details: [setPreviousTask] });
+			// 	setStore({ details: [setPreviousTask] });
 
-			},
+			// },
 
-			nextDetail: () => {
-				const store = getStore();
-				const firstIndex = 0;
-				const lastIndex = store.list.length - 1;
-				const currentTask = store.details[0];
-				let setNextTask;
-				store.list.forEach((item, index, arr) => {
-					if (currentTask["ID Info"] === item["ID Info"]) {
-						if (index === lastIndex) {
-							setNextTask = arr[firstIndex];
-						} else {
-							setNextTask = arr[index + 1];
-						}
-					}
-				});
-				setStore({ details: [setNextTask] });
+			// nextDetail: () => {
+			// 	const store = getStore();
+			// 	const firstIndex = 0;
+			// 	const lastIndex = store.list.length - 1;
+			// 	const currentTask = store.details[0];
+			// 	let setNextTask;
+			// 	store.list.forEach((item, index, arr) => {
+			// 		if (currentTask["ID Info"] === item["ID Info"]) {
+			// 			if (index === lastIndex) {
+			// 				setNextTask = arr[firstIndex];
+			// 			} else {
+			// 				setNextTask = arr[index + 1];
+			// 			}
+			// 		}
+			// 	});
+			// 	setStore({ details: [setNextTask] });
 
-			},
+			// },
 
 			saveChangeDetail: () => {
 				const store = getStore();
@@ -443,29 +448,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				setStore({ list: updatedList });
 			},
-
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
-			}
 		}
 	};
 };
