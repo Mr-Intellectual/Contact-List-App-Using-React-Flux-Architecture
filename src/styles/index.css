@@ -20,6 +20,7 @@
     display: flex;
     width: 100%;
     flex-direction: column;
+    min-width: 576px;
   }
   .Footer{
     margin-top: auto;
@@ -38,6 +39,38 @@
   .list-group-item:nth-child(n+2){
     border-top: 0 !important;
   }
-  /* #test{
-    background: red;
-  } */
+  @media screen and (max-width: 576px) {
+    .fs-4 {
+      font-size: 1.2rem;
+    }
+    .fs-5 {
+      font-size: 1rem;
+    }
+    .fs-6 {
+      font-size: 0.8rem;
+    }
+  }
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    .fs-4 {
+      font-size: 1.5rem;
+    }
+    .fs-5 {
+      font-size: 1.2rem;
+    }
+    .fs-6 {
+      font-size: 1rem;
+    }
+  }
+  @media screen and (min-width: 769px) {
+    .fs-4 {
+      font-size: 1.8rem;
+    }
+    .fs-5 {
+      font-size: 1.5rem;
+    }
+    .fs-6 {
+      font-size: 1.2rem;
+    }
+  }
+
+  

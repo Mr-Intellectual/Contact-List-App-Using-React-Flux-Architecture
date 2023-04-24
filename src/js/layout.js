@@ -4,11 +4,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 //Views
 import Home from "./component/home.jsx";
-// import { Demo } from "./views/demo";
-// import { Single } from "./views/single";
 import injectContext from "./store/appContext";
-// import Table from "./views/table";
-// import Detials from "./views/details";
+
 
 
 //Components
@@ -34,9 +31,6 @@ const Layout = () => {
 						<Route path="/" element={<Home />} />
 						<Route path="/contact" element={<Contact />} />
 						<Route path="/form" element={<Form />} />
-						{/* 
-						<Route path="/table" element={<Table />} />
-						<Route path="/detials" element={<Detials />} /> */}
 						<Route path="*" element={<h1>Not found!</h1>} />
 					</Routes>
 				</div>
