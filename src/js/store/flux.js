@@ -41,6 +41,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
 
+			setToast: () => {
+				return (<div className="toast" style={{ position: "fixed", bottom: 58, right: 0 }} role="alert" aria-live="assertive" aria-atomic="true" id="myToast">
+					<div className="toast-header">
+						{/* <img src="..." className="rounded me-2" alt="..."/> */}
+						<i className="fa-solid fa-stop text-danger"></i>
+						<strong className="mx-auto">Alert!</strong>
+						{/* <small className="text-muted">11 mins ago</small> */}
+						<button type="button" className="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+					</div>
+					<div className="toast-body text-center" id="toastBody">
+
+					</div>
+				</div>
+				)
+			},
+
 			// Use getActions to call a function within a fuction
 			trashIcon: (i) => {
 				const store = getStore();
@@ -48,67 +64,149 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ list: newList })
 			},
 
+
+
+			showToast: (msg) => {
+				const myToast = document.getElementById('myToast');
+				const toast = new bootstrap.Toast(myToast);
+				const toastBody = myToast.querySelector('.toast-body');
+				toastBody.textContent = msg;
+				toast.show();
+			},
+
 			saveButton: (e) => {
+				e.preventDefault();
 				const store = getStore();
-				const Info = getActions().ranInfo();
-				const inputValue = store.holder;
-				const memo = store.memoHolder;
+				const inputValues = store.contactHolder[0];
 
-				let input1 = document.querySelector('#input1')
-				if (inputValue === "") {
-					alert("The input cannot be empty");
+				// Check if any of the values in inputValues is empty
+				for (const value of Object.values(inputValues)) {
+					if (!value) {
+						getActions().showToast("All fields are required.")
+						return;
+					}
+				}
+
+				// Create a new object and add it to the list
+				const newObject = { ...inputValues };
+				const newList = [...store.list, newObject];
+				setStore({ list: newList });
+
+				// Clear the contactHolder
+				setStore({
+					contactHolder: [
+						{
+							"First Name": "",
+							"Last Name": "",
+							"E-Mail": "",
+							"Phone": "",
+							"Address": "",
+						},
+					],
+				});
+				console.log(store)
+			},
+
+
+
+			setContactHolder: (field, e) => {
+				e.preventDefault();
+				const store = getStore();
+				let value = e.target.value;
+
+				if (field === "Phone") {
+					value = value.replace(/\D/g, "");
+					value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6, 10)}`;
+					console.log(value)
+				}
+				const newContactHolder = { ...store.contactHolder[0], [field]: value };
+				setStore({ contactHolder: [newContactHolder] });
+			},
+
+
+			keyPress: (field, e) => {
+				const store = getStore();
+
+
+				let formInput = document.querySelectorAll("input"),
+					id = e.target.id,
+					pos;
+
+				if (e.key === "Enter") {
+					console.log(store)
+
+					if (field === "Phone") {
+						console.log("in")
+						getActions().formatPhoneNumber(e.target)
+					}
+
+
+					formInput.forEach((item, index) => {
+						if (item.id === id) {
+							pos = index;
+							return;
+						}
+					});
+
+					for (let i = pos + 1; i < formInput.length; i++) {
+						if (formInput[i].value === "") {
+							formInput[i].focus();
+							return;
+						}
+					}
+
+					for (let i = 0; i < formInput.length; i++) {
+						if (formInput[i].value === "") {
+							formInput[i].focus();
+							return;
+						}
+					}
+				}
+			},
+
+			formatPhoneNumber: (i) => {
+				const input = i;
+				const phoneNumber = input.value.replace(/\D/g, '');
+
+
+				if (phoneNumber.length < 4) {
+					input.value = phoneNumber;
+				} else if (phoneNumber.length < 7) {
+					input.value = `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
 				} else {
-					const newObject = {
-						"Task Info": inputValue,
-						"ID Info": Info.ID,
-						"Created": Info.Date,
-						"Status": Info.Status,
-						"Memo": memo
-					};
-
-
-					const newList = [...store.list, newObject];
-					setStore({ list: newList });
-					setStore({ holder: "" }); // reset the input value after adding a new task
-					setStore({ memoHolder: "" });
-				}
-				input1.value = ""
-			},
-
-			setContactHolder: (e) => {
-				e.preventDefault()
-				if (e.target.value) {
-					setStore({ holder: e.target.value });
+					input.value = `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
 				}
 			},
 
-			// keyPress: (e) => {
-			// 	const store = getStore();
-			// 	const Info = getActions().ranInfo();
-			// 	const memo = store.memoHolder;
-			// 	const inputValue = store.holder;
 
-			// 	let input1 = document.querySelector('#input1')
-			// 	if (e.key === "Enter" && inputValue === "") {
-			// 		alert("The input cannot be empty");
-			// 	} else if (e.key === "Enter") {
-			// 		const newObject = {
-			// 			"Task Info": inputValue,
-			// 			"ID Info": Info.ID,
-			// 			"Created": Info.Created,
-			// 			"Status": Info.Status,
-			// 			"Memo": memo
-			// 		};
+			inputValidation: (field, e) => {
+				const store = getStore();
+				const inputValue = store.contactHolder[0][field];
+
+				let isValid = false;
+
+				if (field === "First Name" || field === "Last Name") {
+					isValid = /^[a-zA-Z\s]*$/.test(inputValue);
+				} else if (field === "E-Mail") {
+					isValid = /^\S+@\S+\.\S+$/.test(inputValue);
+				} else if (field === "Phone") {
+					isValid = /^\(\d{3}\) \d{3}-\d{4}$/.test(inputValue);
+				} else if (field === "Address") {
+					isValid = /^[a-zA-Z0-9\s,'-]*$/.test(inputValue);
+				}
+
+				if (e.key === "Enter") {
+					if (!isValid) {
+						getActions().showToast(`Please enter a valid ${field}`);
+						e.target.value = "";
+						return false;
+					} else {
+						return true;
+					}
+				}
+			},
 
 
-
-			// 		const newList = [...store.list, newObject];
-			// 		setStore({ list: newList });
-			// 		setStore({ holder: "" }); // reset the input value after adding a new task
-			// 		setStore({ memoHolder: "" });
-			// 		input1.value = ""
-			// 	}
-			// },
 
 			ranInfo: () => {
 				const store = getStore();
@@ -391,62 +489,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ holder: "" })
 				setStore({ details: [newMemo] });
 
-			},
-
-			// backDetail: () => {
-
-			// 	const store = getStore();
-			// 	const currentTask = store.details[0];
-			// 	const firstIndex = 0;
-			// 	const lastIndex = store.list.length - 1;
-			// 	let setPreviousTask;
-
-			// 	for (let i = 0; i < store.list.length; i++) {
-			// 		if (currentTask["ID Info"] === store.list[i]["ID Info"]) {
-			// 			if (i === firstIndex) {
-			// 				setPreviousTask = store.list[lastIndex];
-			// 			} else {
-			// 				setPreviousTask = store.list[i - 1];
-			// 			}
-			// 			break;
-			// 		}
-			// 	}
-
-			// 	setStore({ details: [setPreviousTask] });
-
-			// },
-
-			// nextDetail: () => {
-			// 	const store = getStore();
-			// 	const firstIndex = 0;
-			// 	const lastIndex = store.list.length - 1;
-			// 	const currentTask = store.details[0];
-			// 	let setNextTask;
-			// 	store.list.forEach((item, index, arr) => {
-			// 		if (currentTask["ID Info"] === item["ID Info"]) {
-			// 			if (index === lastIndex) {
-			// 				setNextTask = arr[firstIndex];
-			// 			} else {
-			// 				setNextTask = arr[index + 1];
-			// 			}
-			// 		}
-			// 	});
-			// 	setStore({ details: [setNextTask] });
-
-			// },
-
-			saveChangeDetail: () => {
-				const store = getStore();
-				const savedTask = store.details[0];
-				const updatedList = store.list.map((item) => {
-					if (savedTask["ID Info"] === item["ID Info"]) {
-						return savedTask;
-					} else {
-						return item;
-					}
-				});
-
-				setStore({ list: updatedList });
 			},
 		}
 	};

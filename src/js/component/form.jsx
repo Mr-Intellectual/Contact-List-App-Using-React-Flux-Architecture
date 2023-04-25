@@ -9,7 +9,7 @@ const Form = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="container">
+    <div className="container" id="form">
       <form>
         <legend className="text-center mt-5">
           <h1>Add New Contact Information</h1>
@@ -21,9 +21,12 @@ const Form = () => {
           <input
             type="text"
             className="form-control"
-            id="FirstName"
+            id="First Name"
             aria-describedby="nameHelp"
             placeholder="First Name"
+            onChange={(e)=>actions.setContactHolder("First Name", e)}
+            onKeyDown={(e) => actions.inputValidation("First Name", e) && actions.keyPress(e)}
+            
           />
         </div>
         <div className="m-3">
@@ -33,9 +36,12 @@ const Form = () => {
           <input
             type="text"
             className="form-control"
-            id="LastName"
+            id="Last Name"
             aria-describedby="nameHelp"
             placeholder="Last Name"
+            onChange={(e)=>actions.setContactHolder("Last Name", e)}
+            onKeyDown={(e) => actions.inputValidation("Last Name", e) && actions.keyPress(e)}
+
           />
         </div>
         <div className="m-3">
@@ -48,6 +54,9 @@ const Form = () => {
             id="Email"
             aria-describedby="emailHelp"
             placeholder="Enter email"
+            onChange={(e)=>actions.setContactHolder("E-Mail", e)}
+            onKeyDown={(e) => actions.inputValidation("E-Mail", e) && actions.keyPress(e)}
+
           />
         </div>
         <div className="m-3">
@@ -59,6 +68,10 @@ const Form = () => {
             className="form-control"
             id="Phone"
             placeholder="Enter phone"
+            onChange={(e)=>actions.setContactHolder("Phone", e)}
+            onKeyDown={(e) => actions.inputValidation("Phone", e) && actions.keyPress("Phone", e)}
+
+
           />
         </div>
         <div className="m-3">
@@ -70,11 +83,14 @@ const Form = () => {
             className="form-control"
             id="Address"
             placeholder="Enter address"
+            onChange={(e)=>actions.setContactHolder("Address", e)}
+            onKeyDown={(e) => actions.inputValidation("Address", e) && actions.keyPress(e)}
+
           />
         </div>
         <div className="d-grid gap-2 m-3">
           <button
-            onClick={(e) => actions.saveChangeDetail(e)}
+            onClick={(e) => actions.saveButton(e)}
             className="btn btn-primary"
             type="button"
           >
@@ -87,7 +103,9 @@ const Form = () => {
           </Link>
         </div>
       </form>
+      {actions.setToast()}
     </div>
+
   );
 };
 
