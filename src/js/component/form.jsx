@@ -90,7 +90,7 @@ const Form = () => {
         </div>
         <div className="d-grid gap-2 m-3">
           <button
-            onClick={(e) => actions.saveButton(e)}
+            onClick={(e) => actions.saveButtonForms(e)}
             className="btn btn-primary"
             type="button"
           >

@@ -109,7 +109,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				toast.show();
 			},
 
-			saveButton: (e) => {
+			saveButtonForms: (e) => {
 				e.preventDefault();
 				const store = getStore();
 				const inputValues = store.contactHolder[0];
@@ -142,20 +142,143 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(store)
 			},
 
+			// saveButtonContacts: (field,e) => {
+			// 	e.preventDefault();
+			// 	console.log("you saved me")
+			// 	const store = getStore();
+			// 	const inputValues = store.contactHolder[0];
+			// 	console.log(field)
+
+			// 	// // Check if any of the values in inputValues is empty
+			// 	for (const key of Object.keys(store.list)) {
+
+			// 		console.log(store.list[key])
+					
+			// 		if (store.list[key] === field) {
+			// 			console.log(store.list[key])
+			// 		// 	getActions().showToast("All fields are required.")
+			// 		// 	return;
+			// 		}
+			// 	}
+
+			// 	// Create a new object and add it to the list
+			// 	// const newObject = { ...inputValues };
+			// 	// const newList = [...store.list, newObject];
+			// 	// setStore({ list: newList });
+
+			// 	// // Clear the contactHolder
+			// 	setStore({
+			// 		contactHolder: [
+			// 			{
+			// 				"First Name": "",
+			// 				"Last Name": "",
+			// 				"E-Mail": "",
+			// 				"Phone": "",
+			// 				"Address": "",
+			// 			},
+			// 		],
+			// 	});
+			// 	console.log(store)
+			// },
+
+
+			// saveButtonContacts: (field, e) => {
+			// 	e.preventDefault();
+			// 	console.log("you saved me");
+			// 	const store = getStore();
+			// 	const inputValues = store.contactHolder[0];
+			// 	console.log(field);
+			  
+			// 	// Find the index of the contact to be updated
+			// 	const index = store.list.findIndex((contact) => contact === store.editedValuesHolder[0]);
+			  
+			// 	// Update the contact with the new values from the contactHolder
+			// 	const updatedContact = { ...store.list[index], ...inputValues };
+			// 	const updatedList = [...store.list];
+			// 	updatedList[index] = updatedContact;
+			  
+			// 	setStore({
+			// 	  list: updatedList,
+			// 	  contactHolder: [
+			// 		{
+			// 		  "First Name": "",
+			// 		  "Last Name": "",
+			// 		  "E-Mail": "",
+			// 		  "Phone": "",
+			// 		  "Address": "",
+			// 		},
+			// 	  ],
+			// 	});
+			// 	console.log(store);
+			//   },
+
+
+			saveButtonContacts: (field, e) => {
+				e.preventDefault();
+				console.log("you saved me");
+				const store = getStore();
+				const inputValues = store.contactHolder[0];
+				console.log(field);
+				console.log(e.target);
+			  
+				// Find the index of the contact to be updated
+				const index = store.list.findIndex((contact) => contact === store.editedValuesHolder[0]);
+			  
+				// Update the contact with the new values from the contactHolder
+				const updatedContact = { ...store.list[index] };
+				console.log(updatedContact)
+				updatedContact[field] = inputValues[field];
+				console.log(updatedContact)
+			  
+				const updatedList = [...store.list];
+				updatedList[index] = updatedContact;
+			  
+				setStore({
+				  list: updatedList,
+				  contactHolder: [
+					{
+					  "First Name": "",
+					  "Last Name": "",
+					  "E-Mail": "",
+					  "Phone": "",
+					  "Address": "",
+					},
+				  ],
+				});
+				console.log(store);
+			  },
+			  
+			  
+
 
 
 			setContactHolder: (field, e) => {
 				// e.preventDefault();
 				const store = getStore();
-				let value = e.target.value;
-				console.log(e.target.value)
+				let value = e.target.value,
+				fName,lName;
+				let newContactHolder
+				// console.log(e.target.id)
+				// console.log(e.target.value)
+				// console.log(field)
 
 				if (field === "Phone") {
 					value = value.replace(/\D/g, "");
 					value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6, 10)}`;
 					console.log(value)
+				}else if(field === "Name's"){
+					if (e.target.id === "First Name"){
+						
+						 newContactHolder = { ...store.contactHolder[0], [e.target.id]: e.target.value };
+						console.log(newContactHolder)
+					}else if(e.target.id === "Last Name"){
+						
+						 newContactHolder = { ...store.contactHolder[0], [e.target.id]: e.target.value };
+						console.log(newContactHolder)
+					}
+				}else{
+					newContactHolder = { ...store.contactHolder[0], [field]: value };
 				}
-				const newContactHolder = { ...store.contactHolder[0], [field]: value };
 				setStore({ contactHolder: [newContactHolder] });
 			},
 
@@ -439,6 +562,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({
 					editedValuesHolder: newObject,
 				});
+				// console.log(store.editedValuesHolder[1])
 			},
 
 
@@ -717,19 +841,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			taskChangeDetail: (e) => {
-				const store = getStore();
-				const inputValue = store.holder;
-				e.preventDefault()
+				// const store = getStore();
+				// const inputValue = store.holder;
+				// e.preventDefault()
 
-				let newTask = {
-					"Task Info": inputValue,
-					"ID Info": store.details[0]["ID Info"],
-					"Status": store.details[0]["Status"],
-					"Created": store.details[0]["Created"],
-					"Memo": store.details[0]["Memo"]
-				};
-				setStore({ details: [newTask] });
-				setStore({ holder: "" })
+				// let newTask = {
+				// 	"Task Info": inputValue,
+				// 	"ID Info": store.details[0]["ID Info"],
+				// 	"Status": store.details[0]["Status"],
+				// 	"Created": store.details[0]["Created"],
+				// 	"Memo": store.details[0]["Memo"]
+				// };
+				// setStore({ details: [newTask] });
+				// setStore({ holder: "" })
 
 			},
 
