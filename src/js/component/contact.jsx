@@ -25,7 +25,7 @@ const Contact = () => {
       <div className=" border border-0  ">
         <div className="card ">
           <ul className="list-group list-group-flush ">
-            <li className="list-group-item p-2 ">
+            {/* <li className="list-group-item p-2 ">
               <div className="row">
                 <div className="col-sm-4 col-md-3 col-lg-3 text-center ">
                   <img
@@ -76,7 +76,7 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
-            </li>
+            </li> */}
 
             {store.list.length !== 0 ? (
               store.list.map((item, index) => (
@@ -93,28 +93,28 @@ const Contact = () => {
                       />
                     </div>
 
-                    <div className="col-sm-8 col-md-9 col-lg-7 d-flex flex-column">
+                    <div className="col-sm-8 col-md-9 col-lg-7 d-flex flex-column" id="editBoxes" onClick={(e)=> actions.popModal(index,e)}>
                       <div className=" py-1 my-1">
-                        <p className="h4 m-0">
+                        <p className="h4 m-0" id="Name">
                           {item["First Name"] + " " + item["Last Name"]}
                         </p>
                       </div>
-                      <div className="">
+                      <div className="" >
                         <div className="my-1">
                           <i className="fa-solid fa-location-crosshairs fa-lg"></i>
-                          <p className="fs-4 d-inline-block ms-2 mb-2">
+                          <p className="fs-4 d-inline-block ms-2 mb-2" id="Address" >
                             {item["Address"]}
                           </p>
                         </div>
                         <div className="my-1">
                           <i className="fa-solid fa-mobile-screen-button fa-lg"></i>
-                          <p className="fs-5 d-inline-block ms-2 mb-2">
+                          <p className="fs-5 d-inline-block ms-2 mb-2" id="Phone" >
                             {item["Phone"]}
                           </p>
                         </div>
                         <div className="my-1">
                           <i className="fa-solid fa-envelope-circle-check fa-lg"></i>
-                          <p className="fs-6 d-inline-block ms-2 mb-2">
+                          <p className="fs-6 d-inline-block ms-2 mb-2" id="E-Mail" >
                             {item["E-Mail"]}
                           </p>
                         </div>
@@ -125,6 +125,8 @@ const Contact = () => {
                         <button
                           className="btn btn-outline-black btn-sm mx-0 w-100"
                           type="button"
+                          id="edit"
+                          onClick={(e)=> actions.editButton(index,e)}
                         >
                           <i className="fa-solid fa-pen fa-lg"></i>
                         </button>
@@ -133,6 +135,7 @@ const Contact = () => {
                         <button
                           className="btn btn-outline-black btn-sm mx-0 w-100"
                           type="button"
+                          onClick={() => actions.trashIcon(index)}
                         >
                           <i className="fa-solid fa-trash fa-lg"></i>
                         </button>
@@ -141,6 +144,15 @@ const Contact = () => {
                   </div>
                 </li>
               ))
+
+
+
+
+
+
+
+
+              
             ) : (
               <li className="list-group-item p-2">
                 <div className="row">
@@ -179,6 +191,60 @@ const Contact = () => {
           </ul>
         </div>
       </div>
+      {/* { store.editedValuesHolder[1]["state"]? (actions.addModal()):"" } */}
+      {/* { store.editedValuesHolder[1]["state"] && actions.addModal() } */}
+
+
+      
+
+      <div className="modal fade" id="Modal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div className="modal-dialog modal-dialog-centered modal-dialog-scrollable" style={{maxWidth: "500px"}}>
+							<div className="modal-content">
+								<div className="modal-header p-0">
+									<h1 className="col modal-title fs-5 text-center mt-2" id="exampleModalLabel">Edit Contact</h1>
+									<button type="button" className="btn-close my-1 mr-1" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+								<div className="modal-body p-2 pb-0" id="modalBody">
+
+{/* {console.log(store.editedValuesHolder[1]["state"])} */}
+
+                <form  id="task-from">
+					<div className="mb-2">
+					  <label htmlFor="recipient-name" className="col-form-label">Change 
+            {/* {store.editedValuesHolder[1]["state"]? store.editedValuesHolder[0]:""} */}
+             Here:</label>
+					  <input type="text" className="form-control" id="task-change" onChange={(e) => actions.setContactHolder(e)} 
+            // onKeyDown="${(e) => e.key === 'Enter' && e.currentTarget.closest('.modal').querySelector('[data-bs-dismiss="modal"]').click()}" 
+            />
+					</div>
+				  </form>
+
+
+
+
+									{/* <form id="task-from" >
+										<div className="mb-2">
+											<label htmlFor="recipient-name" className="col-form-label">Change Task Below:</label>
+											<input type="text" className="form-control" placeholder="hello" id="task-change" onChange={(e) => console.log("hi")} onKeyDown={(e) =>console.log("hi")} />
+										</div>
+									</form> */}
+
+
+									{/* {console.log("you add me")} */}
+								</div>
+								<div className="modal-footer p-1">
+									<button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+									<button onClick={(e) => actions.taskChangeDetail(e)} type="button" className="btn btn-primary" data-bs-dismiss="modal">Save Changes</button>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+
+
+
+
     </div>
   );
 };

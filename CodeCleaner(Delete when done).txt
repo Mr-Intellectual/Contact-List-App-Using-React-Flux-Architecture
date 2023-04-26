@@ -1,85 +1,87 @@
 import { validate } from "webpack"
 
-{store.list.length !== 0 ? (
-  store.list.map((item, index) => (
-    // <li
-    //   className="list-group-item d-flex justify-content-between align-items-center  border border-2 border border-primary p-1"
-    //   key={index}
-    // >
-    //   <p className="m-0 px-2 text-break">
-    //     {item["Task Info"]}
-    //   </p>
-    //   <button
-    //     onClick={() => actions.trashIcon(index)}
-    //     className=" btn btn-outline-danger btn-sm"
-    //     type="button"
-    //     id="trash"
-    //   >
-    //     <i className="fa-regular fa-trash-can"></i>
-    //   </button>
-    // </li>
+{
+  store.list.length !== 0 ? (
+    store.list.map((item, index) => (
+      // <li
+      //   className="list-group-item d-flex justify-content-between align-items-center  border border-2 border border-primary p-1"
+      //   key={index}
+      // >
+      //   <p className="m-0 px-2 text-break">
+      //     {item["Task Info"]}
+      //   </p>
+      //   <button
+      //     onClick={() => actions.trashIcon(index)}
+      //     className=" btn btn-outline-danger btn-sm"
+      //     type="button"
+      //     id="trash"
+      //   >
+      //     <i className="fa-regular fa-trash-can"></i>
+      //   </button>
+      // </li>
 
-    <li className="list-group-item border-2 p-2 border border-2 rounded-3" key={index}>
-    <div className="row">
-      <div className="col-sm-4 col-md-3 col-lg-3 text-center ">
-        <img
-          src="https://picsum.photos/200/200?grayscale"
-          className="rounded-circle img-fluid"
-          alt="..."
-          style={{
-            objectFit: "cover",
-          }}
-        />
-      </div>
-
-      <div className="col-sm-8 col-md-9 col-lg-7 d-flex flex-column">
-        <div className=" py-1 my-1">
-          <p className="h4 m-0">{item["First Name"] + " " + item["Last Name"] }</p>
-        </div>
-        <div className="">
-          <div className="my-1">
-            <i className="fa-solid fa-location-crosshairs fa-lg"></i>
-            <p className="fs-4 d-inline-block ms-2 mb-2">{item["Address"]}</p>
+      <li className="list-group-item border-2 p-2 border border-2 rounded-3" key={index}>
+        <div className="row">
+          <div className="col-sm-4 col-md-3 col-lg-3 text-center ">
+            <img
+              src="https://picsum.photos/200/200?grayscale"
+              className="rounded-circle img-fluid"
+              alt="..."
+              style={{
+                objectFit: "cover",
+              }}
+            />
           </div>
-          <div className="my-1">
-            <i className="fa-solid fa-mobile-screen-button fa-lg"></i>
-            <p className="fs-5 d-inline-block ms-2 mb-2">{item["Phone"]}</p>
-          </div>
-          <div className="my-1">
-            <i className="fa-solid fa-envelope-circle-check fa-lg"></i>
-            <p className="fs-6 d-inline-block ms-2 mb-2">{item["E-Mail"]}</p>
-          </div>
-        </div>
-      </div>
-      <div className="col-sm-12 col-md-12 col-lg-2 my-2 py-2">
-        <div className="col-6 col-sm-6 text-center d-inline-block px-1">
-          <button
-            className="btn btn-outline-black btn-sm mx-0 w-100"
-            type="button"
-          >
-            <i className="fa-solid fa-pen fa-lg"></i>
-          </button>
-        </div>
-        <div className="col-6 col-sm-6 text-center d-inline-block px-1">
-          <button
-            className="btn btn-outline-black btn-sm mx-0 w-100"
-            type="button"
-          >
-            <i className="fa-solid fa-trash fa-lg"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  </li>
 
-    
+          <div className="col-sm-8 col-md-9 col-lg-7 d-flex flex-column">
+            <div className=" py-1 my-1">
+              <p className="h4 m-0">{item["First Name"] + " " + item["Last Name"]}</p>
+            </div>
+            <div className="">
+              <div className="my-1">
+                <i className="fa-solid fa-location-crosshairs fa-lg"></i>
+                <p className="fs-4 d-inline-block ms-2 mb-2">{item["Address"]}</p>
+              </div>
+              <div className="my-1">
+                <i className="fa-solid fa-mobile-screen-button fa-lg"></i>
+                <p className="fs-5 d-inline-block ms-2 mb-2">{item["Phone"]}</p>
+              </div>
+              <div className="my-1">
+                <i className="fa-solid fa-envelope-circle-check fa-lg"></i>
+                <p className="fs-6 d-inline-block ms-2 mb-2">{item["E-Mail"]}</p>
+              </div>
+            </div>
+          </div>
+          <div className="col-sm-12 col-md-12 col-lg-2 my-2 py-2">
+            <div className="col-6 col-sm-6 text-center d-inline-block px-1">
+              <button
+                className="btn btn-outline-black btn-sm mx-0 w-100"
+                type="button"
+              >
+                <i className="fa-solid fa-pen fa-lg"></i>
+              </button>
+            </div>
+            <div className="col-6 col-sm-6 text-center d-inline-block px-1">
+              <button
+                className="btn btn-outline-black btn-sm mx-0 w-100"
+                type="button"
+              >
+                <i className="fa-solid fa-trash fa-lg"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </li>
 
-  ))
-) : (
+
+
+    ))
+  ) : (
   <li className="list-group-item d-flex justify-content-between align-items-center border border-2 border border-primary border border-3 p-2">
     Please add some task to the list...
   </li>
-)}
+)
+}
 
 
 
@@ -96,35 +98,35 @@ import { validate } from "webpack"
 
 
 <li className="list-group-item border-2 p-2 border border-2 rounded-3 ">
-<div className="row">
-  <div className="col-sm-4 col-md-3 col-lg-3 text-center ">
-    <img
-      src="https://picsum.photos/200/200?grayscale"
-      className="rounded-circle img-fluid"
-      alt="..."
-      style={{
-        objectFit: "cover",
-      }}
-    />
-  </div>
+  <div className="row">
+    <div className="col-sm-4 col-md-3 col-lg-3 text-center ">
+      <img
+        src="https://picsum.photos/200/200?grayscale"
+        className="rounded-circle img-fluid"
+        alt="..."
+        style={{
+          objectFit: "cover",
+        }}
+      />
+    </div>
 
 
-  <div>
-        <p className="mt-4 fs-4">There is Nothing Here... Click the Button to Add Tasks</p>
-      </div>
-      <Link className="m-4 p-2 d-grid" to="/todo">
-        <button
-          className=" btn btn-outline-dark btn-lg my-1"
-          type="button"
-          id="link"
-        >
-          <i className="fa-regular fa-hand-point-right pr-2 m-1 fa-lg"></i>
-          Click Here To Add Tasks
-        </button>
-      </Link>
+    <div>
+      <p className="mt-4 fs-4">There is Nothing Here... Click the Button to Add Tasks</p>
+    </div>
+    <Link className="m-4 p-2 d-grid" to="/todo">
+      <button
+        className=" btn btn-outline-dark btn-lg my-1"
+        type="button"
+        id="link"
+      >
+        <i className="fa-regular fa-hand-point-right pr-2 m-1 fa-lg"></i>
+        Click Here To Add Tasks
+      </button>
+    </Link>
 
 
-  {/* <div className="col-sm-8 col-md-9 col-lg-7 d-flex flex-column  ">
+    {/* <div className="col-sm-8 col-md-9 col-lg-7 d-flex flex-column  ">
     <div className=" py-1 my-1">
       <p className="h4 m-0">Reo Petersen</p>
     </div>
@@ -161,7 +163,7 @@ import { validate } from "webpack"
       </button>
     </div>
   </div> */}
-</div>
+  </div>
 </li>
 
 
@@ -187,71 +189,72 @@ I want the contactHolder values to check their empty in the saveButton function
 
 const getState = ({ getStore, getActions, setStore }) => {
 
-return {
-  store: {
-    list: [
-      // {
-      // 	"First Name": "Cookie",
-      // 	"Last Name": "Monster",
-      // 	"E-Mail": "SesameCookie@gmail.com",
-      // 	"Phone": "(212) 123-4567",
-      // 	"Address": "123 Sesame St, New York, NY 12345",
+  return {
+    store: {
+      list: [
+        // {
+        // 	"First Name": "Cookie",
+        // 	"Last Name": "Monster",
+        // 	"E-Mail": "SesameCookie@gmail.com",
+        // 	"Phone": "(212) 123-4567",
+        // 	"Address": "123 Sesame St, New York, NY 12345",
 
-      // },
-    ],
-    contactHolder: [
-      {
-        "First Name": "",
-        "Last Name": "",
-        "E-Mail": "",
-        "Phone": "",
-        "Address": "",
+        // },
+      ],
+      contactHolder: [
+        {
+          "First Name": "",
+          "Last Name": "",
+          "E-Mail": "",
+          "Phone": "",
+          "Address": "",
 
-      },
-    ],
+        },
+      ],
 
-  },
-  actions: {
-
-
-
-    setContactHolder: (field, e) => {
-      e.preventDefault();
-      const store = getStore();
-      const newContactHolder = { ...store.contactHolder[0], [field]: e.target.value };
-      setStore({ contactHolder: [newContactHolder] });
     },
+    actions: {
+
+
+
+      setContactHolder: (field, e) => {
+        e.preventDefault();
+        const store = getStore();
+        const newContactHolder = { ...store.contactHolder[0], [field]: e.target.value };
+        setStore({ contactHolder: [newContactHolder] });
+      },
 
       saveButton: (e) => {
-				const store = getStore();
-				const inputValues = store.contactHolder[0];
-				console.log(inputValues.keys)
+        const store = getStore();
+        const inputValues = store.contactHolder[0];
+        console.log(inputValues.keys)
 
-				// let input1 = document.querySelector('#input1')
-				// if (inputValue === "") {
-				// 	alert("The input cannot be empty");
-				// } else {
-				// 	const newObject = {
-				// 		"Task Info": inputValue,
-				// 		"ID Info": Info.ID,
-				// 		"Created": Info.Date,
-				// 		"Status": Info.Status,
-				// 		"Memo": memo
-				// 	};
+        // let input1 = document.querySelector('#input1')
+        // if (inputValue === "") {
+        // 	alert("The input cannot be empty");
+        // } else {
+        // 	const newObject = {
+        // 		"Task Info": inputValue,
+        // 		"ID Info": Info.ID,
+        // 		"Created": Info.Date,
+        // 		"Status": Info.Status,
+        // 		"Memo": memo
+        // 	};
 
 
-				// 	const newList = [...store.list, newObject];
-				// 	setStore({ list: newList });
-				// 	setStore({ holder: "" }); // reset the input value after adding a new task
-				// 	setStore({ memoHolder: "" });
-				// }
-				// input1.value = ""
-			},
-  
+        // 	const newList = [...store.list, newObject];
+        // 	setStore({ list: newList });
+        // 	setStore({ holder: "" }); // reset the input value after adding a new task
+        // 	setStore({ memoHolder: "" });
+        // }
+        // input1.value = ""
+      },
+
+
+    }
 
   }
 
-}
 
 
 
@@ -268,10 +271,8 @@ return {
 
 
 
-
-// =======================================================================
-// =======================================================================
-
+    // =======================================================================
+    // =======================================================================
 
 
 
@@ -279,82 +280,83 @@ return {
 
 
 
-        <>
-<form>
-        <legend className="text-center mt-5">
-    <h1>Add New Contact Information</h1>
-  </legend><div className="m-3">
-      <label htmlFor="exampleInputEmail1" className="form-label">
-        First Name
-      </label>
-      <input
-        type="text"
-        className="form-control"
-        id="First Name"
-        aria-describedby="nameHelp"
-        placeholder="First Name"
-        onChange={(e) => actions.setContactHolder("First Name", e)}
-        onKeyDown={(e) => actions.keyPress(e)} />
-    </div><div className="m-3">
-      <label htmlFor="exampleInputEmail1" className="form-label">
-        Last Name
-      </label>
-      <input
-        type="text"
-        className="form-control"
-        id="Last Name"
-        aria-describedby="nameHelp"
-        placeholder="Last Name"
-        onChange={(e) => actions.setContactHolder("Last Name", e)}
-        onKeyDown={(e) => actions.keyPress(e)} />
-    </div><div className="m-3">
-      <label htmlFor="exampleInputEmail1" className="form-label">
-        Email
-      </label>
-      <input
-        type="email"
-        className="form-control"
-        id="Email"
-        aria-describedby="emailHelp"
-        placeholder="Enter email"
-        onChange={(e) => actions.setContactHolder("E-Mail", e)}
-        onKeyDown={(e) => actions.keyPress(e)} />
-    </div><div className="m-3">
-      <label htmlFor="exampleInputPassword1" className="form-label">
-        Phone
-      </label>
-      <input
-        type="phone"
-        className="form-control"
-        id="Phone"
-        placeholder="Enter phone"
-        onChange={(e) => actions.setContactHolder("Phone", e)}
-        onKeyDown={(e) => actions.keyPress(e)} />
-    </div><div className="m-3">
-      <label htmlFor="exampleInputPassword1" className="form-label">
-        Address
-      </label>
-      <input
-        type="address"
-        className="form-control"
-        id="Address"
-        placeholder="Enter address"
-        onChange={(e) => actions.setContactHolder("Address", e)}
-        onKeyDown={(e) => actions.keyPress(e)} />
-    </div><div className="d-grid gap-2 m-3">
-      <button
-        onClick={(e) => actions.saveButton(e)}
-        className="btn btn-primary"
-        type="button"
-      >
-        Save
-      </button>
-    </div><div className="m-3">
-      <Link className="m-0 p-0" to="/contact">
-        or get back to contacts
-      </Link>
-    </div>
-      </form>
+
+    <>
+    <form>
+      <legend className="text-center mt-5">
+        <h1>Add New Contact Information</h1>
+      </legend><div className="m-3">
+        <label htmlFor="exampleInputEmail1" className="form-label">
+          First Name
+        </label>
+        <input
+          type="text"
+          className="form-control"
+          id="First Name"
+          aria-describedby="nameHelp"
+          placeholder="First Name"
+          onChange={(e) => actions.setContactHolder("First Name", e)}
+          onKeyDown={(e) => actions.keyPress(e)} />
+      </div><div className="m-3">
+        <label htmlFor="exampleInputEmail1" className="form-label">
+          Last Name
+        </label>
+        <input
+          type="text"
+          className="form-control"
+          id="Last Name"
+          aria-describedby="nameHelp"
+          placeholder="Last Name"
+          onChange={(e) => actions.setContactHolder("Last Name", e)}
+          onKeyDown={(e) => actions.keyPress(e)} />
+      </div><div className="m-3">
+        <label htmlFor="exampleInputEmail1" className="form-label">
+          Email
+        </label>
+        <input
+          type="email"
+          className="form-control"
+          id="Email"
+          aria-describedby="emailHelp"
+          placeholder="Enter email"
+          onChange={(e) => actions.setContactHolder("E-Mail", e)}
+          onKeyDown={(e) => actions.keyPress(e)} />
+      </div><div className="m-3">
+        <label htmlFor="exampleInputPassword1" className="form-label">
+          Phone
+        </label>
+        <input
+          type="phone"
+          className="form-control"
+          id="Phone"
+          placeholder="Enter phone"
+          onChange={(e) => actions.setContactHolder("Phone", e)}
+          onKeyDown={(e) => actions.keyPress(e)} />
+      </div><div className="m-3">
+        <label htmlFor="exampleInputPassword1" className="form-label">
+          Address
+        </label>
+        <input
+          type="address"
+          className="form-control"
+          id="Address"
+          placeholder="Enter address"
+          onChange={(e) => actions.setContactHolder("Address", e)}
+          onKeyDown={(e) => actions.keyPress(e)} />
+      </div><div className="d-grid gap-2 m-3">
+        <button
+          onClick={(e) => actions.saveButton(e)}
+          className="btn btn-primary"
+          type="button"
+        >
+          Save
+        </button>
+      </div><div className="m-3">
+        <Link className="m-0 p-0" to="/contact">
+          or get back to contacts
+        </Link>
+      </div>
+    </form>
     </>
 
 
@@ -375,29 +377,29 @@ return {
 
 
 
-// =======================================================================
+  // =======================================================================
 
 
 
 
 
 
-formatPhoneNumber: (e) => {
-  const input = e.target;
-  const key = e.keyCode || e.charCode;
-  const phoneNumber = input.value.replace(/\D/g, '');
+  formatPhoneNumber: (e) => {
+    const input = e.target;
+    const key = e.keyCode || e.charCode;
+    const phoneNumber = input.value.replace(/\D/g, '');
 
-  if (key !== 8 && key !== 46) {
-    // Not backspace or delete key
-    if (phoneNumber.length < 4) {
-      input.value = phoneNumber;
-    } else if (phoneNumber.length < 7) {
-      input.value = `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
-    } else {
-      input.value = `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
+    if (key !== 8 && key !== 46) {
+      // Not backspace or delete key
+      if (phoneNumber.length < 4) {
+        input.value = phoneNumber;
+      } else if (phoneNumber.length < 7) {
+        input.value = `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+      } else {
+        input.value = `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
+      }
     }
-  }
-},
+  },
 
 
 
@@ -405,58 +407,58 @@ formatPhoneNumber: (e) => {
 
 
 
-<div className="m-3">
-<label htmlFor="exampleInputPassword1" className="form-label">
-  Phone
-</label>
-<input
-  type="phone"
-  className="form-control"
-  id="Phone"
-  placeholder="Enter phone"
-  onChange={(e)=>actions.setContactHolder("Phone", e)}
+    <div className="m-3">
+      <label htmlFor="exampleInputPassword1" className="form-label">
+        Phone
+      </label>
+      <input
+        type="phone"
+        className="form-control"
+        id="Phone"
+        placeholder="Enter phone"
+        onChange={(e) => actions.setContactHolder("Phone", e)}
 
-  onKeyDown={(e) => actions.inputValidation("Phone", e) && actions.keyPress("Phone",e)}
- 
-  
+        onKeyDown={(e) => actions.inputValidation("Phone", e) && actions.keyPress("Phone", e)}
 
-/>
+
+
+      />
 
 
 keyPress: (field,e) => {
 				const store = getStore();
-				
 
-				let formInput = document.querySelectorAll("input"),
-					id = e.target.id,
-					pos;
 
-				if (e.key === "Enter") {
-					console.log(store)
+      let formInput = document.querySelectorAll("input"),
+      id = e.target.id,
+      pos;
+
+      if (e.key === "Enter") {
+        console.log(store)
 
 					if(field === "Phone"){
-						console.log("in")
+        console.log("in")
 						getActions().formatPhoneNumber(field)
 					}
 
 					formInput.forEach((item, index) => {
 						if (item.id === id) {
-							pos = index;
-							return;
+        pos = index;
+      return;
 						}
 					});
 
-					for (let i = pos + 1; i < formInput.length; i++) {
+      for (let i = pos + 1; i < formInput.length; i++) {
 						if (formInput[i].value === "") {
-							formInput[i].focus();
-							return;
+        formInput[i].focus();
+      return;
 						}
 					}
 
-					for (let i = 0; i < formInput.length; i++) {
+      for (let i = 0; i < formInput.length; i++) {
 						if (formInput[i].value === "") {
-							formInput[i].focus();
-							return;
+        formInput[i].focus();
+      return;
 						}
 					}
 				}
@@ -464,14 +466,465 @@ keyPress: (field,e) => {
 
 			formatPhoneNumber: (i) => {
 				const input = i;
-				const phoneNumber = input.value.replace(/\D/g, '');
-			  
-				
-				  if (phoneNumber.length < 4) {
-					input.value = phoneNumber;
+      const phoneNumber = input.value.replace(/\D/g, '');
+
+
+      if (phoneNumber.length < 4) {
+        input.value = phoneNumber;
 				  } else if (phoneNumber.length < 7) {
-					input.value = `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+        input.value = `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
 				  } else {
-					input.value = `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
+        input.value = `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
 				  }
 			  },
+
+
+
+
+
+
+
+
+
+
+
+
+      i want the editButton function to get the current index of the store.list[index] and editedValuesHolder. Then copy it into the newObject, the store.list should overwrite the first object in the newObject, and the editedValuesHolder second object should be copied.
+
+
+      const getState = ({getStore, getActions, setStore}) => {
+
+
+return {
+        store: {
+        list: [
+      {
+        "First Name": "1Cookie",
+      "Last Name": "Monster",
+      "E-Mail": "SesameCookie@gmail.com",
+      "Phone": "(212) 123-4567",
+      "Address": "123 Sesame St, New York, NY 12345",
+
+      },
+      {
+        "First Name": "2Cookie",
+      "Last Name": "Monster",
+      "E-Mail": "SesameCookie@gmail.com",
+      "Phone": "(212) 123-4567",
+      "Address": "123 Sesame St, New York, NY 12345",
+
+      },
+      {
+        "First Name": "3Cookie",
+      "Last Name": "Monster",
+      "E-Mail": "SesameCookie@gmail.com",
+      "Phone": "(212) 123-4567",
+      "Address": "123 Sesame St, New York, NY 12345",
+
+      },
+      {
+        "First Name": "4Cookie",
+      "Last Name": "Monster",
+      "E-Mail": "SesameCookie@gmail.com",
+      "Phone": "(212) 123-4567",
+      "Address": "123 Sesame St, New York, NY 12345",
+
+      },
+
+      ],
+      contactHolder: [
+      {
+        "First Name": "",
+      "Last Name": "",
+      "E-Mail": "",
+      "Phone": "",
+      "Address": "",
+
+      },
+      ],
+      editedValuesHolder: [
+      {
+
+      },
+      {
+        "state": false
+      }
+
+      ]
+
+  },
+      actions: {
+
+        editButton: (index,e) => {
+      const store = getStore();
+      let newObject = {...store.editedValuesHolder, store.list[index]};
+
+      let getState = newObject[1],
+      getValue = store.list[index]
+
+      console.log(index);
+      console.log(getState);
+      console.log(getValue);
+      console.log(newObject);
+    
+    },
+  }
+
+
+
+
+
+
+
+      i want the editButton function to get the current index of the store.list[index] and editedValuesHolder. Then copy it into the newObject, the store.list should overwrite the first object in the newObject, and the editedValuesHolder second object should be copied.
+
+
+
+is the popModal correct?
+
+
+      const getState = ({getStore, getActions, setStore}) => {
+
+
+return {
+        store: {
+        list: [
+      {
+        "First Name": "1Cookie",
+      "Last Name": "Monster",
+      "E-Mail": "SesameCookie@gmail.com",
+      "Phone": "(212) 123-4567",
+      "Address": "123 Sesame St, New York, NY 12345",
+
+      },
+      {
+        "First Name": "2Cookie",
+      "Last Name": "Monster",
+      "E-Mail": "SesameCookie@gmail.com",
+      "Phone": "(212) 123-4567",
+      "Address": "123 Sesame St, New York, NY 12345",
+
+      },
+      {
+        "First Name": "3Cookie",
+      "Last Name": "Monster",
+      "E-Mail": "SesameCookie@gmail.com",
+      "Phone": "(212) 123-4567",
+      "Address": "123 Sesame St, New York, NY 12345",
+
+      },
+      {
+        "First Name": "4Cookie",
+      "Last Name": "Monster",
+      "E-Mail": "SesameCookie@gmail.com",
+      "Phone": "(212) 123-4567",
+      "Address": "123 Sesame St, New York, NY 12345",
+
+      },
+
+      ],
+      contactHolder: [
+      {
+        "First Name": "",
+      "Last Name": "",
+      "E-Mail": "",
+      "Phone": "",
+      "Address": "",
+
+      },
+      ],
+      editedValuesHolder: [
+      {
+
+      },
+      {
+        "state": false
+      }
+
+      ]
+
+  },
+      actions: {
+
+
+    		popModal: (index,e) => {
+          const store = getStore();
+          let getState = store.editedValuesHolder[1];
+          let getValue = store.editedValuesHolder[0];
+          let getModalBody = document.querySelector("#Modal").querySelector("#modalBody")
+          // let status = document.querySelectorAll("li");
+          // status[index].querySelector("#editBoxes").removeAttribute("data-bs-toggle", "modal");
+          // status[index].querySelector("#editBoxes").removeAttribute("data-bs-target", "#Modal");
+          // status[index].querySelector("#editBoxes").removeAttribute("data-bs-whatever", "@getbootstrap");
+  
+          getModalBody.innerHTML = (
+            <form onSubmit={(e) => actions.taskChangeDetail(e)} id="task-from" >
+                      <div className="mb-2">
+                        <label htmlFor="recipient-name" className="col-form-label">Change Task Here:</label>
+                        <input type="text" className="form-control" id="task-change" onChange={(e) => actions.setHolder(e)} onKeyDown={(e) => e.key === 'Enter' && e.currentTarget.closest('.modal').querySelector('[data-bs-dismiss="modal"]').click()} />
+                      </div>
+                    </form>
+          )
+  
+          console.log(getModalBody.innerHTML)
+  
+          if (getState["state"]) {
+            for (const key of Object.keys(getValue)) {
+              if (key === e.target.id) {
+                // console.log(getValue[key])
+                // console.log(key)
+                setStore({
+                  editedValuesHolder: [{}, { state: false }]
+                });
+              } else if (e.target.id === "Name") {
+                // console.log(getValue["First Name"])
+                // console.log(getValue["Last Name"])
+                setStore({
+                  editedValuesHolder: [{}, { state: false }]
+                });
+                // console.log(store.editedValuesHolder)
+  
+                return
+              }
+            }
+          }
+          // console.log(store.editedValuesHolder)
+        },
+
+
+
+  	editButton: (index, e) => {
+      const store = getStore();
+      const currentIndex = store.list[index];
+      let newObject = [currentIndex, store.editedValuesHolder[1]];
+      let status = document.querySelectorAll("li");
+      status[index].querySelector("#editBoxes").setAttribute("data-bs-toggle", "modal");
+      status[index].querySelector("#editBoxes").setAttribute("data-bs-target", "#Modal");
+      status[index].querySelector("#editBoxes").setAttribute("data-bs-whatever", "@getbootstrap");
+
+      console.log(e.target)
+
+      // console.log(newObject);
+      if (e.type === "click") {
+
+        newObject[1] = { "state": true };
+
+      setStore({editedValuesHolder: newObject });
+
+      }
+
+
+
+
+    },
+
+
+			addModal: () => {
+
+
+
+				return (
+      <div className="modal fade" id="Modal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal-dialog modal-dialog-centered modal-sm">
+          <div className="modal-content">
+            <div className="modal-header p-0">
+              <h1 className="col modal-title fs-5 text-center mt-2" id="exampleModalLabel">Status Change</h1>
+              <button type="button" className="btn-close my-1 mr-1" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body p-2 pb-0">
+              {console.log("you add me")}
+            </div>
+          </div>
+        </div>
+      </div>
+      )
+
+			},
+    }
+      
+
+
+
+
+    const Contact = () => {
+      const {store, actions} = useContext(Context);
+      return (
+      <div className="">
+        <div className="mb-2 mt-5 d-flex">
+          {store.list.length !== 0 ? actions.ranContact() : ""}
+          <div
+            className={
+              store.list.length !== 0 ? "col-6 text-end" : "col-12 text-end"
+            }
+          >
+            <Link className="" to="/form">
+              <button className="btn btn-success btn-sm" type="button">
+                Add new contact info
+              </button>
+            </Link>
+          </div>
+        </div>
+
+        <div className=" border border-0  ">
+          <div className="card ">
+            <ul className="list-group list-group-flush ">
+
+              {store.list.length !== 0 ? (
+                store.list.map((item, index) => (
+                  <li className="list-group-item p-2 " key={index}>
+                    <div className="row">
+                      <div className="col-sm-4 col-md-3 col-lg-3 text-center ">
+                        <img
+                          src="https://picsum.photos/200/200?grayscale"
+                          className="rounded-circle img-fluid"
+                          alt="..."
+                          style={{
+                            objectFit: "cover",
+                          }}
+                        />
+                      </div>
+
+                      <div className="col-sm-8 col-md-9 col-lg-7 d-flex flex-column" id="editBoxes" onClick={(e) => actions.popModal(e)}>
+                        <div className=" py-1 my-1">
+                          <p className="h4 m-0" id="Name">
+                            {item["First Name"] + " " + item["Last Name"]}
+                          </p>
+                        </div>
+                        <div className="">
+                          <div className="my-1">
+                            <i className="fa-solid fa-location-crosshairs fa-lg"></i>
+                            <p className="fs-4 d-inline-block ms-2 mb-2" id="Address" onClick={(e) => actions.popModal(e)}>
+                              {item["Address"]}
+                            </p>
+                          </div>
+                          <div className="my-1">
+                            <i className="fa-solid fa-mobile-screen-button fa-lg"></i>
+                            <p className="fs-5 d-inline-block ms-2 mb-2" id="Phone" onClick={(e) => actions.popModal(e)}>
+                              {item["Phone"]}
+                            </p>
+                          </div>
+                          <div className="my-1">
+                            <i className="fa-solid fa-envelope-circle-check fa-lg"></i>
+                            <p className="fs-6 d-inline-block ms-2 mb-2" id="E-Mail" onClick={(e) => actions.popModal(e)}>
+                              {item["E-Mail"]}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-sm-12 col-md-12 col-lg-2 my-2 py-2">
+                        <div className="col-6 col-sm-6 text-center d-inline-block px-1">
+                          <button
+                            className="btn btn-outline-black btn-sm mx-0 w-100"
+                            type="button"
+                            id="edit"
+                            onClick={(e) => actions.editButton(index, e)}
+                          >
+                            <i className="fa-solid fa-pen fa-lg"></i>
+                          </button>
+                        </div>
+                        <div className="col-6 col-sm-6 text-center d-inline-block px-1">
+                          <button
+                            className="btn btn-outline-black btn-sm mx-0 w-100"
+                            type="button"
+                            onClick={() => actions.trashIcon(index)}
+                          >
+                            <i className="fa-solid fa-trash fa-lg"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                ))
+              ) : (
+                <li className="list-group-item p-2">
+                  <div className="row">
+                    <div className="col-sm-4 col-md-3 col-lg-3 text-center ">
+                      <img
+                        src="https://picsum.photos/200/200?grayscale"
+                        className="rounded-circle img-fluid"
+                        alt="..."
+                        style={{
+                          objectFit: "cover",
+                        }}
+                      />
+                    </div>
+
+                    <div className="col-sm-8 col-md-9 col-lg-8 d-flex flex-column justify-content-center text-center">
+                      <div className=" py-1 my-1">
+                        <p className="mt-4 fs-5 ">
+                          Nothing Here... Click the Button to Generate A Random
+                          Contact
+                        </p>
+                      </div>
+                      <div className="">
+                        <button
+                          className=" btn btn-outline-dark btn-lg my-1"
+                          type="button"
+                          id="link"
+                        >
+                          <i className="fa-regular fa-hand-point-right pr-2 m-1 fa-lg"></i>
+                          Click Here To Generate A Random Contact
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              )}
+            </ul>
+          </div>
+        </div>
+        {store.editedValuesHolder[1]["state"] ? actions.addModal() : ""}
+      </div>
+      );
+    };
+
+      export default Contact;
+
+
+
+
+========================================================================================================================================================
+
+
+
+<div className="modal fade" id="Modal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div className="modal-dialog modal-dialog-centered modal-dialog-scrollable" style={{maxWidth: "500px"}}>
+							<div className="modal-content">
+								<div className="modal-header p-0">
+									<h1 className="col modal-title fs-5 text-center mt-2" id="exampleModalLabel">Edit Contact</h1>
+									<button type="button" className="btn-close my-1 mr-1" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+								<div className="modal-body p-2 pb-0" id="modalBody">
+
+
+
+                <form  id="task-from">
+					<div className="mb-2">
+					  <label htmlFor="recipient-name" className="col-form-label">Change Task Here:</label>
+					  <input type="text" className="form-control" id="task-change" onChange={(e) => actions.setContactHolder(e)} 
+            // onKeyDown="${(e) => e.key === 'Enter' && e.currentTarget.closest('.modal').querySelector('[data-bs-dismiss="modal"]').click()}" 
+            />
+					</div>
+				  </form>
+
+
+
+
+									{/* <form id="task-from" >
+										<div className="mb-2">
+											<label htmlFor="recipient-name" className="col-form-label">Change Task Below:</label>
+											<input type="text" className="form-control" placeholder="hello" id="task-change" onChange={(e) => console.log("hi")} onKeyDown={(e) =>console.log("hi")} />
+										</div>
+									</form> */}
+
+
+									{/* {console.log("you add me")} */}
+								</div>
+								<div className="modal-footer p-1">
+									<button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+									<button onClick={(e) => actions.taskChangeDetail(e)} type="button" className="btn btn-primary" data-bs-dismiss="modal">Save Changes</button>
+								</div>
+
+							</div>
+						</div>
+					</div>

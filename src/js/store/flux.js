@@ -5,14 +5,39 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			list: [
-				// {
-				// 	"First Name": "Cookie",
-				// 	"Last Name": "Monster",
-				// 	"E-Mail": "SesameCookie@gmail.com",
-				// 	"Phone": "(212) 123-4567",
-				// 	"Address": "123 Sesame St, New York, NY 12345",
+				{
+					"First Name": "1Cookie",
+					"Last Name": "Monster",
+					"E-Mail": "SesameCookie@gmail.com",
+					"Phone": "(212) 123-4567",
+					"Address": "123 Sesame St, New York, NY 12345",
 
-				// },
+				},
+				{
+					"First Name": "2Cookie",
+					"Last Name": "Monster",
+					"E-Mail": "SesameCookie@gmail.com",
+					"Phone": "(212) 123-4567",
+					"Address": "123 Sesame St, New York, NY 12345",
+
+				},
+				{
+					"First Name": "3Cookie",
+					"Last Name": "Monster",
+					"E-Mail": "SesameCookie@gmail.com",
+					"Phone": "(212) 123-4567",
+					"Address": "123 Sesame St, New York, NY 12345",
+
+				},
+				{
+					"First Name": "4Cookie",
+					"Last Name": "Monster",
+					"E-Mail": "SesameCookie@gmail.com",
+					"Phone": "(212) 123-4567",
+					"Address": "123 Sesame St, New York, NY 12345",
+
+				},
+
 			],
 			contactHolder: [
 				{
@@ -24,6 +49,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				},
 			],
+			editedValuesHolder: [
+				{
+
+				},
+				{
+					"state": false,
+					"selection":""
+				}
+
+			]
 
 		},
 		actions: {
@@ -110,9 +145,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 			setContactHolder: (field, e) => {
-				e.preventDefault();
+				// e.preventDefault();
 				const store = getStore();
 				let value = e.target.value;
+				console.log(e.target.value)
 
 				if (field === "Phone") {
 					value = value.replace(/\D/g, "");
@@ -131,6 +167,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let formInput = document.querySelectorAll("input"),
 					id = e.target.id,
 					pos;
+				// console.log(id)
 
 				if (e.key === "Enter") {
 					console.log(store)
@@ -204,6 +241,220 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return true;
 					}
 				}
+			},
+
+			editButton: (index, e) => {
+				const store = getStore();
+				const currentIndex = store.list[index];
+				let newObject = [currentIndex, store.editedValuesHolder[1]];
+				let status = document.querySelectorAll("li");
+				status[index].querySelector("#editBoxes").setAttribute("data-bs-toggle", "modal");
+				status[index].querySelector("#editBoxes").setAttribute("data-bs-target", "#Modal");
+				status[index].querySelector("#editBoxes").setAttribute("data-bs-whatever", "@getbootstrap");
+
+				// console.log(e.target)
+
+				// console.log(newObject);
+				if (e.type === "click") {
+
+					newObject[1] = { "state": true,"selection":"" };
+
+					setStore({ editedValuesHolder: newObject });
+
+				}
+				// console.log(store.editedValuesHolder[0])
+
+
+				// console.
+
+				// console.log(status[index].querySelectorAll("p"))
+				// status[index].querySelector("#editBoxes").querySelectorAll("p").forEach(i=>console.log(
+
+
+				// 	i
+				// 	// if(i.innerText === store.editedValuesHolder[0] ){
+
+				// 	// }
+				// 	))
+				// console.log(status[index].querySelector("#editBoxes"))
+				// console.log(store.editedValuesHolder[0])
+
+				// status[index].querySelectorAll("p").forEach(i=>console.log(i.parentNode.parentNode.parentNode.querySelector("#editBoxes")))
+
+				// if (e.target.parentNode.parentNode.querySelector("#switch").id === "switch") {
+				// 	status.forEach((i) => {
+				// 		i.setAttribute("data-bs-toggle", "modal");
+				// 		i.setAttribute("data-bs-target", "#Modal");
+				// 		i.setAttribute("data-bs-whatever", "@getbootstrap");
+				// 	})
+
+
+
+				// 	setStore({ statusIDHolder: [{ state: true, ID: 0 }] })
+				// }
+
+
+
+
+
+			},
+
+
+
+
+			// popModal: (index,e) => {
+			// 	const store = getStore();
+			// 	let getState = store.editedValuesHolder[1];
+			// 	let getValue = store.editedValuesHolder[0];
+			// 	let getModalBody = document.querySelector("#Modal").querySelector("#modalBody")
+			// 	// let status = document.querySelectorAll("li");
+			// 	// status[index].querySelector("#editBoxes").removeAttribute("data-bs-toggle", "modal");
+			// 	// status[index].querySelector("#editBoxes").removeAttribute("data-bs-target", "#Modal");
+			// 	// status[index].querySelector("#editBoxes").removeAttribute("data-bs-whatever", "@getbootstrap");
+
+			// 	getModalBody.innerHTML = (
+			// 		<form onSubmit={(e) => actions.taskChangeDetail(e)} id="task-from" >
+			// 							<div className="mb-2">
+			// 								<label htmlFor="recipient-name" className="col-form-label">Change Task Here:</label>
+			// 								<input type="text" className="form-control" id="task-change" onChange={(e) => actions.setHolder(e)} onKeyDown={(e) => e.key === 'Enter' && e.currentTarget.closest('.modal').querySelector('[data-bs-dismiss="modal"]').click()} />
+			// 							</div>
+			// 						</form>
+			// 	)
+
+			// 	console.log(getModalBody.innerHTML)
+
+			// 	if (getState["state"]) {
+			// 		for (const key of Object.keys(getValue)) {
+			// 			if (key === e.target.id) {
+			// 				// console.log(getValue[key])
+			// 				// console.log(key)
+			// 				setStore({
+			// 					editedValuesHolder: [{}, { state: false }]
+			// 				});
+			// 			} else if (e.target.id === "Name") {
+			// 				// console.log(getValue["First Name"])
+			// 				// console.log(getValue["Last Name"])
+			// 				setStore({
+			// 					editedValuesHolder: [{}, { state: false }]
+			// 				});
+			// 				// console.log(store.editedValuesHolder)
+
+			// 				return
+			// 			}
+			// 		}
+			// 	}
+			// 	// console.log(store.editedValuesHolder)
+			// },
+
+
+
+			popModal: (index, e) => {
+				const store = getStore();
+				let getState = store.editedValuesHolder[1];
+				let getValue = store.editedValuesHolder[0];
+				const currentIndex = store.list[index];
+				let newObject = [currentIndex, store.editedValuesHolder[1]];
+				let getModalBody = document.querySelector("#Modal").querySelector("#modalBody");
+
+				// console.log(store.editedValuesHolder)
+				console.log(newObject[1]["selection"]);
+
+				// getModalBody.innerHTML = `
+				//   <form  id="task-from">
+				// 	<div class="mb-2">
+				// 	  <label for="recipient-name" class="col-form-label">Change Task Here:</label>
+				// 	  <input type="text" class="form-control" id="task-change" onChange="${(e) => actions.setHolder(e)}" onKeyDown="${(e) => e.key === 'Enter' && e.currentTarget.closest('.modal').querySelector('[data-bs-dismiss="modal"]').click()}" />
+				// 	</div>
+				//   </form>
+				// `;
+
+				// console.log(getModalBody.innerHTML);
+
+				if (getState["state"]) {
+					for (const key of Object.keys(getValue)) {
+						if (key === e.target.id) {
+
+							// getModalBody.innerHTML += `
+							// <form  id="task-from">
+							// 	<div class="mb-2">
+							// 	<label for="recipient-name" class="col-form-label">Change ${key} Here:</label>
+							// 	<input type="text" class="form-control" placeholder="${key}: ${getValue[key]}" id="task-change" onChange="${((e) => actions.setContactHolder(key, e))}" onKeyDown="${(e) => e.key === 'Enter' && e.currentTarget.closest('.modal').querySelector('[data-bs-dismiss="modal"]').click()}" />
+							// 	</div>
+							// </form>
+							// `;
+
+							newObject[1]["selection"] = key;
+
+							console.log(key)	
+							console.log(newObject[1]["selection"]);
+
+							// setStore({
+							// 	editedValuesHolder: [{}, { state: false }],
+							// });
+						} else if (e.target.id === "Name") {
+							
+							// getModalBody.innerHTML = `
+							// <form  id="task-from">
+							// 	<div class="mb-2">
+							// 	<label for="recipient-name" class="col-form-label">Change ${e.target.id}'s Here:</label>
+							// 	<input type="text" class="form-control  my-1 p-1" placeholder="First Name: ${getValue["First Name"]}" id="task-change" onChange="${(e) => actions.setContactHolder(getValue["First Name"], e)}" onKeyDown="${(e) => e.key === 'Enter' && e.currentTarget.closest('.modal').querySelector('[data-bs-dismiss="modal"]').click()}" />
+							// 	<input type="text" class="form-control my-1 p-1" placeholder="Last Name: ${getValue["Last Name"]}" id="task-change" onChange="${(e) => actions.setContactHolder(getValue["Last Name"], e)}" onKeyDown="${(e) => e.key === 'Enter' && e.currentTarget.closest('.modal').querySelector('[data-bs-dismiss="modal"]').click()}" />
+							// 	</div>
+							// </form>
+							// `;
+							
+							
+							// setStore({
+							// 	editedValuesHolder: [{}, { state: false }],
+							// });
+							return;
+						}
+					}
+				}
+			},
+
+
+			getModelInfo:()=>{
+				
+			},
+
+
+
+			addModal: () => {
+
+
+
+				return (
+					<div className="modal fade" id="Modal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div className="modal-dialog modal-dialog-centered modal-dialog-scrollable" style={{maxWidth: "500px"}}>
+							<div className="modal-content">
+								<div className="modal-header p-0">
+									<h1 className="col modal-title fs-5 text-center mt-2" id="exampleModalLabel">Edit Contact</h1>
+									<button type="button" className="btn-close my-1 mr-1" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+								<div className="modal-body p-2 pb-0" id="modalBody">
+
+
+									<form id="task-from" >
+										<div className="mb-2">
+											<label htmlFor="recipient-name" className="col-form-label">Change Task Below:</label>
+											<input type="text" className="form-control" placeholder="hello" id="task-change" onChange={(e) => console.log("hi")} onKeyDown={(e) =>console.log("hi")} />
+										</div>
+									</form>
+
+
+									{/* {console.log("you add me")} */}
+								</div>
+								<div className="modal-footer p-1">
+									<button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+									<button onClick={(e) => actions.taskChangeDetail(e)} type="button" className="btn btn-primary" data-bs-dismiss="modal">Save Changes</button>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				)
+
 			},
 
 

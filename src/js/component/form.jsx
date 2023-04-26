@@ -25,7 +25,7 @@ const Form = () => {
             aria-describedby="nameHelp"
             placeholder="First Name"
             onChange={(e)=>actions.setContactHolder("First Name", e)}
-            onKeyDown={(e) => actions.inputValidation("First Name", e) && actions.keyPress(e)}
+            onKeyDown={(e) => actions.inputValidation("First Name", e) && actions.keyPress("First Name",e)}
             
           />
         </div>
@@ -40,7 +40,7 @@ const Form = () => {
             aria-describedby="nameHelp"
             placeholder="Last Name"
             onChange={(e)=>actions.setContactHolder("Last Name", e)}
-            onKeyDown={(e) => actions.inputValidation("Last Name", e) && actions.keyPress(e)}
+            onKeyDown={(e) => actions.inputValidation("Last Name", e) && actions.keyPress("Last Name",e)}
 
           />
         </div>
@@ -55,7 +55,7 @@ const Form = () => {
             aria-describedby="emailHelp"
             placeholder="Enter email"
             onChange={(e)=>actions.setContactHolder("E-Mail", e)}
-            onKeyDown={(e) => actions.inputValidation("E-Mail", e) && actions.keyPress(e)}
+            onKeyDown={(e) => actions.inputValidation("E-Mail", e) && actions.keyPress("E-Mail",e)}
 
           />
         </div>
@@ -84,7 +84,7 @@ const Form = () => {
             id="Address"
             placeholder="Enter address"
             onChange={(e)=>actions.setContactHolder("Address", e)}
-            onKeyDown={(e) => actions.inputValidation("Address", e) && actions.keyPress(e)}
+            onKeyDown={(e) => actions.inputValidation("Address", e) && actions.keyPress("Address",e)}
 
           />
         </div>
