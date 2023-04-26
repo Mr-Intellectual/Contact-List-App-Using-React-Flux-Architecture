@@ -6,7 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			list: [
 				{
-					"First Name": "1Cookie",
+					"First Name": "1 Cookie",
 					"Last Name": "Monster",
 					"E-Mail": "SesameCookie@gmail.com",
 					"Phone": "(212) 123-4567",
@@ -14,7 +14,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				},
 				{
-					"First Name": "2Cookie",
+					"First Name": "2 Cookie",
 					"Last Name": "Monster",
 					"E-Mail": "SesameCookie@gmail.com",
 					"Phone": "(212) 123-4567",
@@ -22,7 +22,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				},
 				{
-					"First Name": "3Cookie",
+					"First Name": "3 Cookie",
 					"Last Name": "Monster",
 					"E-Mail": "SesameCookie@gmail.com",
 					"Phone": "(212) 123-4567",
@@ -30,7 +30,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				},
 				{
-					"First Name": "4Cookie",
+					"First Name": "4 Cookie",
 					"Last Name": "Monster",
 					"E-Mail": "SesameCookie@gmail.com",
 					"Phone": "(212) 123-4567",
@@ -220,15 +220,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const inputValues = store.contactHolder[0];
 				console.log(field);
 				console.log(e.target);
+				//fix... Lookng for inpu validation
+				getActions().inputValidation(field,e)
 
 				// Find the index of the contact to be updated
 				const index = store.list.findIndex((contact) => contact === store.editedValuesHolder[0]);
 
 				// Update the contact with the new values from the contactHolder
 				const updatedContact = { ...store.list[index] };
-				console.log(updatedContact)
-				updatedContact[field] = inputValues[field];
-				console.log(updatedContact)
+				console.log(inputValues)
+				if(field !== "Name's"){
+					updatedContact[field] = inputValues[field];
+				}else{
+					updatedContact["First Name"] = inputValues["First Name"];
+					updatedContact["Last Name"] = inputValues["Last Name"];
+				}
+				console.log(inputValues)
 
 				const updatedList = [...store.list];
 				updatedList[index] = updatedContact;
@@ -271,6 +278,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					value = value.replace(/\D/g, "");
 					value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6, 10)}`;
 					console.log(value)
+					newContactHolder = { ...store.contactHolder[0], [field]: value };
 				} else if (field === "Name's") {
 					if (e.target.id === "First Name") {
 
@@ -347,7 +355,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			inputValidation: (field, e) => {
 				const store = getStore();
 				const inputValue = store.contactHolder[0][field];
-
+				
 				let isValid = false;
 
 				if (field === "First Name" || field === "Last Name") {

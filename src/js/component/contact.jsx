@@ -83,14 +83,14 @@ const Contact = () => {
                 <li className="list-group-item p-2 " key={index}>
                   <div className="row">
                     <div className="col-sm-4 col-md-3 col-lg-3 text-center ">
-                      <img
+                      {/* <img
                         src="https://picsum.photos/200/200?grayscale"
                         className="rounded-circle img-fluid"
                         alt="..."
                         style={{
                           objectFit: "cover",
                         }}
-                      />
+                      /> */}
                     </div>
 
                     <div
@@ -274,7 +274,8 @@ const Contact = () => {
                     }
                     return prev;
                   }, "")}
-                  // onKeyDown="${(e) => e.key === 'Enter' && e.currentTarget.closest('.modal').querySelector('[data-bs-dismiss="modal"]').click()}"
+                  onKeyDown={(e) => actions.keyPress("First Name",e)}
+                  // onKeyDown="${}"
                 /> <input
                 type="text"
                 className="form-control my-1"
@@ -294,6 +295,7 @@ const Contact = () => {
                   }
                   return prev;
                 }, "")}
+                onKeyDown={(e) => actions.keyPress("Last Name",e)}
                 // onKeyDown="${(e) => e.key === 'Enter' && e.currentTarget.closest('.modal').querySelector('[data-bs-dismiss="modal"]').click()}"
               /></div>}
                 </div>
