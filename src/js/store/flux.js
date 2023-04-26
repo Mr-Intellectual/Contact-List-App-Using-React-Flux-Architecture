@@ -55,7 +55,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				},
 				{
 					"state": false,
-					"selection":""
+					"selection": ""
 				}
 
 			]
@@ -257,12 +257,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				// console.log(newObject);
 				if (e.type === "click") {
 
-					newObject[1] = { "state": true,"selection":"" };
+					newObject[1]["state"] = true
 
 					setStore({ editedValuesHolder: newObject });
 
 				}
-				// console.log(store.editedValuesHolder[0])
+				console.log(store.editedValuesHolder)
 
 
 				// console.
@@ -331,16 +331,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 				setStore({
 			// 					editedValuesHolder: [{}, { state: false }]
 			// 				});
-			// 			} else if (e.target.id === "Name") {
-			// 				// console.log(getValue["First Name"])
-			// 				// console.log(getValue["Last Name"])
-			// 				setStore({
-			// 					editedValuesHolder: [{}, { state: false }]
-			// 				});
-			// 				// console.log(store.editedValuesHolder)
+						// } else if (e.target.id === "Name") {
+						// 	// console.log(getValue["First Name"])
+						// 	// console.log(getValue["Last Name"])
+						// 	setStore({
+						// 		editedValuesHolder: [{}, { state: false }]
+						// 	});
+						// 	// console.log(store.editedValuesHolder)
 
-			// 				return
-			// 			}
+						// 	return
+						// }
 			// 		}
 			// 	}
 			// 	// console.log(store.editedValuesHolder)
@@ -348,74 +348,103 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 
+			// popModal: (index, e) => {
+			// 	const store = getStore();
+			// 	let getState = store.editedValuesHolder[1];
+			// 	let getValue = store.editedValuesHolder[0];
+			// 	const currentIndex = store.list[index];
+			// 	let newObject = [currentIndex, store.editedValuesHolder[1]];
+			// 	let getModalBody = document.querySelector("#Modal").querySelector("#modalBody");
+
+			// 	// console.log(store.editedValuesHolder)
+			// 	console.log(newObject[1]["selection"]);
+
+			// 	// getModalBody.innerHTML = `
+			// 	//   <form  id="task-from">
+			// 	// 	<div class="mb-2">
+			// 	// 	  <label for="recipient-name" class="col-form-label">Change Task Here:</label>
+			// 	// 	  <input type="text" class="form-control" id="task-change" onChange="${(e) => actions.setHolder(e)}" onKeyDown="${(e) => e.key === 'Enter' && e.currentTarget.closest('.modal').querySelector('[data-bs-dismiss="modal"]').click()}" />
+			// 	// 	</div>
+			// 	//   </form>
+			// 	// `;
+
+			// 	// console.log(getModalBody.innerHTML);
+
+			// 	if (getState["state"]) {
+			// 		for (const key of Object.keys(getValue)) {
+			// 			if (key === e.target.id) {
+
+			// 				// getModalBody.innerHTML += `
+			// 				// <form  id="task-from">
+			// 				// 	<div class="mb-2">
+			// 				// 	<label for="recipient-name" class="col-form-label">Change ${key} Here:</label>
+			// 				// 	<input type="text" class="form-control" placeholder="${key}: ${getValue[key]}" id="task-change" onChange="${((e) => actions.setContactHolder(key, e))}" onKeyDown="${(e) => e.key === 'Enter' && e.currentTarget.closest('.modal').querySelector('[data-bs-dismiss="modal"]').click()}" />
+			// 				// 	</div>
+			// 				// </form>
+			// 				// `;
+
+			// 				newObject[1]["selection"] = key;
+
+			// 				console.log(key)	
+			// 				console.log("this is inside",newObject);
+
+			// 				setStore({
+			// 					editedValuesHolder: [newObject],
+			// 				});
+			// 			} else if (e.target.id === "Name") {
+
+			// 				// getModalBody.innerHTML = `
+			// 				// <form  id="task-from">
+			// 				// 	<div class="mb-2">
+			// 				// 	<label for="recipient-name" class="col-form-label">Change ${e.target.id}'s Here:</label>
+			// 				// 	<input type="text" class="form-control  my-1 p-1" placeholder="First Name: ${getValue["First Name"]}" id="task-change" onChange="${(e) => actions.setContactHolder(getValue["First Name"], e)}" onKeyDown="${(e) => e.key === 'Enter' && e.currentTarget.closest('.modal').querySelector('[data-bs-dismiss="modal"]').click()}" />
+			// 				// 	<input type="text" class="form-control my-1 p-1" placeholder="Last Name: ${getValue["Last Name"]}" id="task-change" onChange="${(e) => actions.setContactHolder(getValue["Last Name"], e)}" onKeyDown="${(e) => e.key === 'Enter' && e.currentTarget.closest('.modal').querySelector('[data-bs-dismiss="modal"]').click()}" />
+			// 				// 	</div>
+			// 				// </form>
+			// 				// `;
+
+
+			// 				// setStore({
+			// 				// 	editedValuesHolder: [{}, { state: false }],
+			// 				// });
+			// 				return;
+			// 			}
+			// 		}
+			// 	}
+			// },
+
+
+
 			popModal: (index, e) => {
 				const store = getStore();
-				let getState = store.editedValuesHolder[1];
-				let getValue = store.editedValuesHolder[0];
+				const currentState = store.editedValuesHolder[1];
+				const currentValue = store.editedValuesHolder[0];
 				const currentIndex = store.list[index];
-				let newObject = [currentIndex, store.editedValuesHolder[1]];
-				let getModalBody = document.querySelector("#Modal").querySelector("#modalBody");
+				let newObject = [currentIndex, { ...currentState }];
 
-				// console.log(store.editedValuesHolder)
-				console.log(newObject[1]["selection"]);
-
-				// getModalBody.innerHTML = `
-				//   <form  id="task-from">
-				// 	<div class="mb-2">
-				// 	  <label for="recipient-name" class="col-form-label">Change Task Here:</label>
-				// 	  <input type="text" class="form-control" id="task-change" onChange="${(e) => actions.setHolder(e)}" onKeyDown="${(e) => e.key === 'Enter' && e.currentTarget.closest('.modal').querySelector('[data-bs-dismiss="modal"]').click()}" />
-				// 	</div>
-				//   </form>
-				// `;
-
-				// console.log(getModalBody.innerHTML);
-
-				if (getState["state"]) {
-					for (const key of Object.keys(getValue)) {
+				if (currentState["state"]) {
+					for (const key of Object.keys(currentValue)) {
 						if (key === e.target.id) {
-
-							// getModalBody.innerHTML += `
-							// <form  id="task-from">
-							// 	<div class="mb-2">
-							// 	<label for="recipient-name" class="col-form-label">Change ${key} Here:</label>
-							// 	<input type="text" class="form-control" placeholder="${key}: ${getValue[key]}" id="task-change" onChange="${((e) => actions.setContactHolder(key, e))}" onKeyDown="${(e) => e.key === 'Enter' && e.currentTarget.closest('.modal').querySelector('[data-bs-dismiss="modal"]').click()}" />
-							// 	</div>
-							// </form>
-							// `;
-
 							newObject[1]["selection"] = key;
-
-							console.log(key)	
-							console.log(newObject[1]["selection"]);
-
-							// setStore({
-							// 	editedValuesHolder: [{}, { state: false }],
-							// });
-						} else if (e.target.id === "Name") {
+							break; // Exit the loop once the key is found
+						}else if (e.target.id === "Name") {
 							
-							// getModalBody.innerHTML = `
-							// <form  id="task-from">
-							// 	<div class="mb-2">
-							// 	<label for="recipient-name" class="col-form-label">Change ${e.target.id}'s Here:</label>
-							// 	<input type="text" class="form-control  my-1 p-1" placeholder="First Name: ${getValue["First Name"]}" id="task-change" onChange="${(e) => actions.setContactHolder(getValue["First Name"], e)}" onKeyDown="${(e) => e.key === 'Enter' && e.currentTarget.closest('.modal').querySelector('[data-bs-dismiss="modal"]').click()}" />
-							// 	<input type="text" class="form-control my-1 p-1" placeholder="Last Name: ${getValue["Last Name"]}" id="task-change" onChange="${(e) => actions.setContactHolder(getValue["Last Name"], e)}" onKeyDown="${(e) => e.key === 'Enter' && e.currentTarget.closest('.modal').querySelector('[data-bs-dismiss="modal"]').click()}" />
-							// 	</div>
-							// </form>
-							// `;
+							newObject[1]["selection"] = e.target.id +"'s";
 							
-							
-							// setStore({
-							// 	editedValuesHolder: [{}, { state: false }],
-							// });
-							return;
+							break;
 						}
 					}
 				}
+
+				setStore({
+					editedValuesHolder: newObject,
+				});
 			},
 
 
-			getModelInfo:()=>{
-				
+
+			getModelInfo: () => {
+
 			},
 
 
@@ -426,7 +455,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				return (
 					<div className="modal fade" id="Modal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-						<div className="modal-dialog modal-dialog-centered modal-dialog-scrollable" style={{maxWidth: "500px"}}>
+						<div className="modal-dialog modal-dialog-centered modal-dialog-scrollable" style={{ maxWidth: "500px" }}>
 							<div className="modal-content">
 								<div className="modal-header p-0">
 									<h1 className="col modal-title fs-5 text-center mt-2" id="exampleModalLabel">Edit Contact</h1>
@@ -438,7 +467,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 									<form id="task-from" >
 										<div className="mb-2">
 											<label htmlFor="recipient-name" className="col-form-label">Change Task Below:</label>
-											<input type="text" className="form-control" placeholder="hello" id="task-change" onChange={(e) => console.log("hi")} onKeyDown={(e) =>console.log("hi")} />
+											<input type="text" className="form-control" placeholder="hello" id="task-change" onChange={(e) => console.log("hi")} onKeyDown={(e) => console.log("hi")} />
 										</div>
 									</form>
 

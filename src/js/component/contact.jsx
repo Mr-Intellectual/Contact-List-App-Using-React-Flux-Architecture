@@ -206,14 +206,20 @@ const Contact = () => {
 								</div>
 								<div className="modal-body p-2 pb-0" id="modalBody">
 
-{/* {console.log(store.editedValuesHolder[1]["state"])} */}
+{
+  Object.keys(store.editedValuesHolder[0]).forEach(key => {
+  console.log(key); // Output: 'foo', 'baz', 'quux'
+  console.log(myObj[key]); // Output: 'bar', 'qux', 'corge'
+})
+  }
 
                 <form  id="task-from">
 					<div className="mb-2">
-					  <label htmlFor="recipient-name" className="col-form-label">Change 
-            {/* {store.editedValuesHolder[1]["state"]? store.editedValuesHolder[0]:""} */}
+					  <label htmlFor="recipient-name" className="col-form-label">Change  
+            {store.editedValuesHolder[1]["selection"]? " "+store.editedValuesHolder[1]["selection"] + " ":""}
              Here:</label>
 					  <input type="text" className="form-control" id="task-change" onChange={(e) => actions.setContactHolder(e)} 
+            placeholder={""}
             // onKeyDown="${(e) => e.key === 'Enter' && e.currentTarget.closest('.modal').querySelector('[data-bs-dismiss="modal"]').click()}" 
             />
 					</div>
