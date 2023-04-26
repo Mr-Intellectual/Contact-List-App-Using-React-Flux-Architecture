@@ -153,7 +153,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 	for (const key of Object.keys(store.list)) {
 
 			// 		console.log(store.list[key])
-					
+
 			// 		if (store.list[key] === field) {
 			// 			console.log(store.list[key])
 			// 		// 	getActions().showToast("All fields are required.")
@@ -188,15 +188,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 	const store = getStore();
 			// 	const inputValues = store.contactHolder[0];
 			// 	console.log(field);
-			  
+
 			// 	// Find the index of the contact to be updated
 			// 	const index = store.list.findIndex((contact) => contact === store.editedValuesHolder[0]);
-			  
+
 			// 	// Update the contact with the new values from the contactHolder
 			// 	const updatedContact = { ...store.list[index], ...inputValues };
 			// 	const updatedList = [...store.list];
 			// 	updatedList[index] = updatedContact;
-			  
+
 			// 	setStore({
 			// 	  list: updatedList,
 			// 	  contactHolder: [
@@ -220,35 +220,40 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const inputValues = store.contactHolder[0];
 				console.log(field);
 				console.log(e.target);
-			  
+
 				// Find the index of the contact to be updated
 				const index = store.list.findIndex((contact) => contact === store.editedValuesHolder[0]);
-			  
+
 				// Update the contact with the new values from the contactHolder
 				const updatedContact = { ...store.list[index] };
 				console.log(updatedContact)
 				updatedContact[field] = inputValues[field];
 				console.log(updatedContact)
-			  
+
 				const updatedList = [...store.list];
 				updatedList[index] = updatedContact;
-			  
+
 				setStore({
-				  list: updatedList,
-				  contactHolder: [
-					{
-					  "First Name": "",
-					  "Last Name": "",
-					  "E-Mail": "",
-					  "Phone": "",
-					  "Address": "",
-					},
-				  ],
+					list: updatedList,
+					contactHolder: [
+						{
+							"First Name": "",
+							"Last Name": "",
+							"E-Mail": "",
+							"Phone": "",
+							"Address": "",
+						},
+					],
 				});
 				console.log(store);
-			  },
-			  
-			  
+				const inputs = document.querySelectorAll("input");
+				inputs.forEach((input) => {
+					input.value = "";
+				});
+
+			},
+
+
 
 
 
@@ -256,7 +261,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				// e.preventDefault();
 				const store = getStore();
 				let value = e.target.value,
-				fName,lName;
+					fName, lName;
 				let newContactHolder
 				// console.log(e.target.id)
 				// console.log(e.target.value)
@@ -266,17 +271,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 					value = value.replace(/\D/g, "");
 					value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6, 10)}`;
 					console.log(value)
-				}else if(field === "Name's"){
-					if (e.target.id === "First Name"){
-						
-						 newContactHolder = { ...store.contactHolder[0], [e.target.id]: e.target.value };
+				} else if (field === "Name's") {
+					if (e.target.id === "First Name") {
+
+						newContactHolder = { ...store.contactHolder[0], [e.target.id]: e.target.value };
 						console.log(newContactHolder)
-					}else if(e.target.id === "Last Name"){
-						
-						 newContactHolder = { ...store.contactHolder[0], [e.target.id]: e.target.value };
+					} else if (e.target.id === "Last Name") {
+
+						newContactHolder = { ...store.contactHolder[0], [e.target.id]: e.target.value };
 						console.log(newContactHolder)
 					}
-				}else{
+				} else {
 					newContactHolder = { ...store.contactHolder[0], [field]: value };
 				}
 				setStore({ contactHolder: [newContactHolder] });
@@ -454,16 +459,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 				setStore({
 			// 					editedValuesHolder: [{}, { state: false }]
 			// 				});
-						// } else if (e.target.id === "Name") {
-						// 	// console.log(getValue["First Name"])
-						// 	// console.log(getValue["Last Name"])
-						// 	setStore({
-						// 		editedValuesHolder: [{}, { state: false }]
-						// 	});
-						// 	// console.log(store.editedValuesHolder)
+			// } else if (e.target.id === "Name") {
+			// 	// console.log(getValue["First Name"])
+			// 	// console.log(getValue["Last Name"])
+			// 	setStore({
+			// 		editedValuesHolder: [{}, { state: false }]
+			// 	});
+			// 	// console.log(store.editedValuesHolder)
 
-						// 	return
-						// }
+			// 	return
+			// }
 			// 		}
 			// 	}
 			// 	// console.log(store.editedValuesHolder)
@@ -550,10 +555,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 						if (key === e.target.id) {
 							newObject[1]["selection"] = key;
 							break; // Exit the loop once the key is found
-						}else if (e.target.id === "Name") {
-							
-							newObject[1]["selection"] = e.target.id +"'s";
-							
+						} else if (e.target.id === "Name") {
+
+							newObject[1]["selection"] = e.target.id + "'s";
+
 							break;
 						}
 					}
